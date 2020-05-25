@@ -62,7 +62,7 @@ export function deleteTable(uuid) {
  * @param { string } uuid: table uuid identifier
  */
 export function getGeoJsonData(uuid) {
-  return request({
+  return request()({
     url: `/tables/geojson/${uuid}/`,
     method: 'get'
   })
@@ -73,7 +73,7 @@ export function getGeoJsonData(uuid) {
  * @param source
  */
 export function getThirdPartyForms(source) {
-  return request({
+  return request()({
     url: `/tables/data/forms/?source=${source}`,
     method: 'get'
   })
