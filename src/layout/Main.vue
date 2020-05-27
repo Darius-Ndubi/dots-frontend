@@ -42,5 +42,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.spacer {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+.drawer {
+  .header {
+    display: flex;
+    margin-top: 45px;
+    margin-right: 30px;
+    margin-left: 30px;
+    align-items: center;
+  }
+}
 </style>

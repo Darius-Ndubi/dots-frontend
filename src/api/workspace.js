@@ -14,3 +14,10 @@ export function createWorkspace(data) {
     data
   })
 }
+
+export function getWorkspaceUsers(workspace_id) {
+  return request()({
+    url: `/workspace/${workspace_id}/users`,
+    method: 'get'
+  })
+}

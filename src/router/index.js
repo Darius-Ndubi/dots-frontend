@@ -76,6 +76,18 @@ const routes = [
         meta: {
           title: 'dashboard'
         }
+      },
+      {
+        path: '/ws/:slug/settings',
+        name: 'Workspace',
+        component: () =>
+          import('@/views/workspace/index.vue'),
+        children: [
+          {
+            path: '',
+            name: 'WorkspaceSettings'
+          }
+        ]
       }
     ]
   },
@@ -150,6 +162,12 @@ const routes = [
         }
       }
     ]
+  },
+  { path: '*', redirect: { name: 'error404' }},
+  {
+    path: '/404',
+    name: 'error404',
+    component: () => import('@/views/error/404.vue')
   },
   {
     path: '/welcome',
