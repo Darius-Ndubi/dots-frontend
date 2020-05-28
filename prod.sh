@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-npm run build
+yarn build --mode development
 http-server dist
