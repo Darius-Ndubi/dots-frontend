@@ -20,3 +20,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Cypress screenshots and videos folders
+/e2e/screenshots
+/e2e/videos

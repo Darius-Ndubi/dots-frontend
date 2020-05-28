@@ -5,11 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "inspect": "vue-cli-service inspect",
     "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
     "lint": "eslint --ext .js,.vue src",
-    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "inspect": "vue-cli-service inspect",
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "dependencies": {
     "@hikaya/hakawati": "^0.1.3",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.2.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.4.0",
     "@vue/cli-plugin-eslint": "^4.2.0",
     "@vue/cli-plugin-router": "^4.2.3",
     "@vue/cli-plugin-unit-jest": "^4.2.0",
@@ -60,6 +62,11 @@
     "vue-cli-plugin-svg-sprite": "^1.0.0",
     "vue-template-compiler": "^2.6.11"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -70,10 +77,5 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
