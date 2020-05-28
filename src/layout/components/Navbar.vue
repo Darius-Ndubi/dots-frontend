@@ -22,7 +22,7 @@
       >{{ item.label }}</router-link>
     </div>
     <div class="avatar-wrapper" @click="toggleDrawer">
-      <el-avatar shape="square">{{ nameInitials }}</el-avatar>
+      <el-avatar shape="circle">{{ nameInitials }}</el-avatar>
     </div>
   </top-nav>
 </template>
@@ -108,7 +108,7 @@ export default {
       font-size: 18px;
       line-height: 22px;
       color: $heading-grey;
-      margin-left: 100px;
+      margin-left: auto;
 
       a {
         text-decoration: none;

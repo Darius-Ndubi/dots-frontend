@@ -18,7 +18,7 @@
         <span class="logout body-reg" @click="logout"><svg-icon icon-name="logout" /> {{ $t('navbar.logout') }}</span>
       </div>
       <div class="workspaces">
-        <h-card class="default">
+        <h-card class="default h-card">
           <div slot="items">
             <span class="heading">{{ getDefaultWorkspace.name }}</span>
             <br>

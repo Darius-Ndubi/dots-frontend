@@ -33,11 +33,11 @@
       <el-form-item label="Description">
         <input-text-area v-model="workspaceForm.description" />
       </el-form-item>
-      <h-label-input
+      <h-input
         v-model="workspaceForm.website"
         :label="$t('workspace.website')"
       />
-      <h-label-input
+      <h-input
         v-model="workspaceForm.location"
         :label="$t('workspace.location')"
       />

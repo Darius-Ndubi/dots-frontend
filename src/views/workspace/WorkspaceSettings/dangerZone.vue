@@ -1,7 +1,7 @@
 <template>
   <el-row type="flex" justify="center" class="spacer">
     <el-col :span="24">
-      <h-card class="card-danger">
+      <h-card class="card-danger h-plain-card">
         <div slot="items">
           <el-row class="mb-20">
             <el-col

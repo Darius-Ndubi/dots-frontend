@@ -2,7 +2,7 @@
   <div>
     <el-row type="flex" justify="center" class="spacer">
       <el-col :span="24">
-        <h-card>
+        <h-card class="h-plain-card">
           <div slot="items">
             <h-form
               ref="workspaceDetailsForm"
@@ -26,7 +26,7 @@
                   <el-form-item :label="$t('workspace.workspaceEmail')" prop="email">
                     <h-input
                       v-model="workspaceDetailsForm.email"
-                      placeholder="info@my-workspace.com"
+                      placeholder="Organization email"
                     />
                   </el-form-item>
                 </el-col>
@@ -34,25 +34,36 @@
               <el-row>
                 <el-col :span="18">
                   <el-form-item label="Description">
-                    <input-text-area v-model="workspaceDetailsForm.description" />
+                    <h-input
+                      v-model="workspaceDetailsForm.description"
+                      type="textarea"
+                      rows="5"
+                    />
                   </el-form-item>
                 </el-col>
               </el-row>
               <el-row>
                 <el-col :span="18">
                   <el-form-item :label="$t('workspace.website')">
-                    <h-label-input v-model="workspaceDetailsForm.website" />
+                    <h-input v-model="workspaceDetailsForm.website" />
                   </el-form-item>
                 </el-col>
               </el-row>
               <el-row>
                 <el-col :span="18">
                   <el-form-item :label="$t('workspace.location')">
-                    <h-label-input v-model="workspaceDetailsForm.location" />
+                    <h-input v-model="workspaceDetailsForm.location" />
                   </el-form-item>
                 </el-col>
                 <el-col :span="6" class="text-right">
-                  <h-button size="medium" type="primary" class="body-bold button-style" @click="updateWorkspace">{{ $t('actionVerbs.save') }}</h-button>
+                  <h-button
+                    `size="medium"
+                    type="primary"
+                    class="body-bold button-style"
+                    @click="updateWorkspace"
+                  >
+                    {{ $t('actionVerbs.save') }}
+                  </h-button>
                 </el-col>
               </el-row>
             </h-form>
