@@ -1,6 +1,6 @@
 # dots
 
-## Project setup
+## Project setup without docker
 ```
 yarn install
 ```
@@ -24,6 +24,24 @@ yarn test:unit
 ```
 yarn lint
 ```
+## Project setup with docker
+
+#### Ensure you have *docker* and *docker-compose* installed
+
+To build the image run:
+```
+docker-compose build
+```
+
+After the image is successfully build you can start dev env with:
+```
+docker-compose up
+```
+Open your favorite browser and navigate to:
+```
+0.0.0.0:8080
+```
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

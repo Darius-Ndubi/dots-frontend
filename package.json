@@ -9,7 +9,8 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "eslint --ext .js,.vue src",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "serve:deploy": "serve -s dist"
   },
   "dependencies": {
     "@hikaya/hakawati": "^0.1.3",

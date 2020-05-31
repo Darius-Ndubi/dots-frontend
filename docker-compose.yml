@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  web:
+    build:
+      context: .
+    volumes:
+      - .:/dots-web
+      - /dots-web/node_modules
+    ports:
+      - '8080:8080'
+    command:
+      - yarn
+      - run
+      - serve
