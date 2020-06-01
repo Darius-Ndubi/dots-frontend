@@ -28,21 +28,21 @@
                 <router-link
                   :to="{
                     name: 'TableDetails',
-                    params: { tableUuid:scope.row.tableUuid }
+                    params: { tableUuid:scope.row.table_uuid }
                   }"
                 >{{ scope.row.name }}
                 </router-link>
               </template>
             </el-table-column>
             <el-table-column property="source" :label="$t('tables.listTable.source')" />
-            <el-table-column property="createDate" :label="$t('tables.listTable.createDate')">
+            <el-table-column property="create_date" :label="$t('tables.listTable.createDate')">
               <template slot-scope="scope">
-                {{ $moment(scope.row.createDate).format('YYYY-MM-DD') }}
+                {{ $moment(scope.row.create_date).format('YYYY-MM-DD') }}
               </template>
             </el-table-column>
-            <el-table-column property="updateDate" :label="$t('tables.listTable.updateDate')">
+            <el-table-column property="update_date" :label="$t('tables.listTable.updateDate')">
               <template slot-scope="scope">
-                {{ $moment(scope.row.updateDate).format('YYYY-MM-DD') }}
+                {{ $moment(scope.row.update_date).format('YYYY-MM-DD') }}
               </template>
             </el-table-column>
             <el-table-column
@@ -54,7 +54,7 @@
                 <h-button
                   type="text"
                   size="small"
-                  @click="$router.push({name: 'TableDetails', params: { tableUuid:scope.row.tableUuid }})"
+                  @click="$router.push({name: 'TableDetails', params: { tableUuid:scope.row.table_uuid }})"
                 >
                   Detail
                 </h-button>
@@ -146,7 +146,7 @@ export default {
       this.loading = true
       this.$store.dispatch(
         `tables/${tableActions.DELETE_TABLE}`,
-        table.tableUuid
+        table.table_uuid
       ).finally(() => {
         this.$notify({
           title: 'Success',

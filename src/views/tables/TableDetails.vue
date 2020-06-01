@@ -68,7 +68,7 @@ export default {
 
     tableObject() {
       return {
-        uuid: this.getTableDetails.tableUuid,
+        uuid: this.getTableDetails.table_uuid,
         name: this.getTableDetails.name
       }
     }

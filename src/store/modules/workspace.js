@@ -42,7 +42,7 @@ const actions = {
     try {
       const workspaces = await getWorkspaces()
       if (workspaces.length !== 0) {
-        const defaultWorkspace = workspaces.filter(ws => ws.isDefault)[0]
+        const defaultWorkspace = workspaces.filter(ws => ws.is_default)[0]
         commit(mutationTypes.SET_DEFAULT_WORKSPACE, defaultWorkspace)
       }
       commit(mutationTypes.SET_WORKSPACES, workspaces)
@@ -54,7 +54,7 @@ const actions = {
 
 const getters = {
   getDefaultWorkspace: state => state.defaultWorkspace,
-  getOtherWorkspaces: state => state.workspaces.filter(ws => !ws.isDefault)
+  getOtherWorkspaces: state => state.workspaces.filter(ws => !ws.is_default)
 }
 
 export default {

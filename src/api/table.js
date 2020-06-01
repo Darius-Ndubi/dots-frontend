@@ -4,7 +4,7 @@ import request from '@/utils/request'
  * load tables from the API
  */
 export function getTables() {
-  return request()({
+  return request({
     url: '/tables/',
     method: 'get'
   })
@@ -16,7 +16,7 @@ export function getTables() {
  */
 export function postTable(data) {
   console.log('I am here with ', data)
-  return request()({
+  return request({
     url: '/tables/',
     method: 'post',
     data
@@ -28,7 +28,7 @@ export function postTable(data) {
  * @param { string } uuid: table unique identifier
  */
 export function getTableDetails(uuid) {
-  return request()({
+  return request({
     url: `/tables/${uuid}/`,
     method: 'get'
   })
@@ -39,7 +39,7 @@ export function getTableDetails(uuid) {
  * @param { string } uuid: table unique identifier
  */
 export function editTable(data, uuid) {
-  return request()({
+  return request({
     url: `/tables/${uuid}/`,
     method: 'patch',
     data
@@ -51,7 +51,7 @@ export function editTable(data, uuid) {
  * @param { string } uuid: table unique identifier
  */
 export function deleteTable(uuid) {
-  return request()({
+  return request({
     url: `/tables/${uuid}/`,
     method: 'delete'
   })
@@ -62,7 +62,7 @@ export function deleteTable(uuid) {
  * @param { string } uuid: table uuid identifier
  */
 export function getGeoJsonData(uuid) {
-  return request()({
+  return request({
     url: `/tables/geojson/${uuid}/`,
     method: 'get'
   })
@@ -73,7 +73,7 @@ export function getGeoJsonData(uuid) {
  * @param source
  */
 export function getThirdPartyForms(source) {
-  return request()({
+  return request({
     url: `/tables/data/forms/?source=${source}`,
     method: 'get'
   })
