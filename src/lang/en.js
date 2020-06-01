@@ -49,6 +49,11 @@ export default {
       title: '404!',
       description: 'It appears this page is missing',
       action: 'GO HOME'
+    },
+    403: {
+      title: '403!',
+      description: 'This action is forbidden',
+      action: 'GO HOME'
     }
   },
   tables: {

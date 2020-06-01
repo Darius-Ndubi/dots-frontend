@@ -170,6 +170,11 @@ const routes = [
     component: () => import('@/views/error/404.vue')
   },
   {
+    path: '/403',
+    name: 'error403',
+    component: () => import('@/views/error/403.vue')
+  },
+  {
     path: '/welcome',
     component: Main,
     meta: { hidden: true },

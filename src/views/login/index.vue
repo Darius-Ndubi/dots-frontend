@@ -1,6 +1,12 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" v-loading="loading" class="login-form" :model="formData" :rules="rules">
+    <el-form
+      ref="loginForm"
+      v-loading="loading"
+      class="login-form"
+      :model="formData"
+      :rules="rules"
+    >
       <div class="header">
         <span class="heading">{{ $t('login.header') }}</span>
       </div>
@@ -10,7 +16,7 @@
         </span>
         <el-input
           v-model="formData.username"
-          :placheholder="$t('login.username')"
+          :placeholder="$t('login.username')"
         />
       </el-form-item>
       <el-tooltip v-model="capsTooltip" :content="$t('login.capsLockOn')" placement="right" manual>
@@ -21,7 +27,7 @@
           <el-input
             ref="password"
             v-model="formData.password"
-            :placheholder="$t('login.password')"
+            :placeholder="$t('login.password')"
             :type="passwordType"
             @keyup.native="checkCapslock"
             @blur="capsTooltip = false"
@@ -139,11 +145,11 @@ export default {
         border-radius: 0;
         padding: 12px 5px 12px 5px;
         height: 47px;
-        color: $dark-body-grey;
+        color: $heading-grey;
         caret-color: $primary-color;
 
         &::placeholder {
-          color: $dark-body-grey;
+          color: $light-body-grey;
           opacity: 1;
         }
 

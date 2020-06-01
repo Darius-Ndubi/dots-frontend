@@ -15,6 +15,6 @@ export const toBase64 = file => {
 
 export const mapArrayEntities = array =>
   array.reduce((obj, item) => {
-    obj[item.tableUuid] = item
+    obj[item.table_uuid] = item
     return obj
   }, {})

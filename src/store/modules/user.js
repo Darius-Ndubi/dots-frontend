@@ -55,6 +55,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       commit('SET_TOKEN', '')
       commit('SET_REFRESH_TOKEN', '')
+      commit('workspace/RESET', null, { root: true })
       removeToken()
       removeRefreshToken()
 

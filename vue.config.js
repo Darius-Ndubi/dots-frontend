@@ -10,6 +10,8 @@ const name = 'Dots'
 
 // See https://www.priestch.com/two-ways-use-svg-icons-in-vue-cli3-based-project/
 
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+
 const IconfontWebpackPlugin = require('iconfont-webpack-plugin')
 
 function tapPostcssLoaderOptions(config, moduleRule, rule) {
@@ -142,6 +144,24 @@ module.exports = {
     plugins: [
       new webpack.ProvidePlugin({
         mapboxgl: 'mapbox-gl'
+      }),
+      new HtmlWebpackExternalsPlugin({
+        externals: [
+          {
+            module: 'mapbox-gl-css',
+            entry: {
+              path: 'https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css',
+              type: 'css'
+            }
+          },
+          {
+            module: 'mapbox-gl-draw-css',
+            entry: {
+              path: 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.css',
+              type: 'css'
+            }
+          }
+        ]
       })
     ]
   }

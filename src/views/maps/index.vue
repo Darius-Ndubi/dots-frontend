@@ -41,7 +41,7 @@
           <el-menu-item-group>
             <el-menu-item
               v-for="item in tableList"
-              :key="item.tableUuid"
+              :key="item.table_uuid"
               index="2-1"
               @click="loadMapData(item)"
             >{{ item.name }}
@@ -188,7 +188,7 @@ export default {
       this.selectedTable = `table${table.id}`
       this.$store.dispatch(
         `tables/${tableActions.GET_MAP_DATA}`,
-        table.tableUuid
+        table.table_uuid
       ).then((response) => {
         this.layerInit = true
         const data =

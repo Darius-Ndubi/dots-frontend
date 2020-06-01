@@ -1,29 +1,23 @@
 <template>
-  <top-nav class="navbar">
-    <router-link
-      :to="{path: '/ws/redirect'}"
-      :disabled="!hasWorkspace"
-      :event="hasWorkspace ? 'click' : ''"
-      :style="!hasWorkspace ? 'cursor: default' : ''"
+  <top-nav class="navbar" default-active="1">
+    <el-menu-item
+      class="brand"
+      index="0"
+      @click="$router.push({name: 'WorkspaceRedirect'})"
     >
-      <div class="brand">
-        <img class="logo" src="@/assets/logo.png">
-        <h1>Dots</h1>
-      </div>
-    </router-link>
-    <div class="nav-menu">
-      <router-link
-        v-for="item in navItems"
-        :key="item.name"
-        :to="{name: item.name}"
-        :disabled="!hasWorkspace"
-        :event="hasWorkspace ? 'click' : ''"
-        :style="!hasWorkspace ? 'cursor: default' : ''"
-      >{{ item.label }}</router-link>
-    </div>
-    <div class="avatar-wrapper" @click="toggleDrawer">
+      <img class="logo" src="@/assets/logo.png">
+      <h1>Dots</h1>
+    </el-menu-item>
+    <el-menu-item
+      v-for="(item, i) in navItems"
+      :key="item.name"
+      :disabled="!hasWorkspace"
+      :index="`${i+1}`"
+      @click="$router.push({name: item.name})"
+    >{{ item.label }}</el-menu-item>
+    <el-menu-item class="avatar-wrapper" @click="toggleDrawer">
       <el-avatar shape="square">{{ nameInitials }}</el-avatar>
-    </div>
+    </el-menu-item>
   </top-nav>
 </template>
 
@@ -78,16 +72,11 @@ export default {
 <style scoped lang="scss">
   .navbar {
     height: 50px;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
+    max-height: 50px;
 
     .brand {
-      display: flex;
-      height: 100%;
-      margin-right: auto;
+      display: inline-flex;
       align-items: center;
-
       .logo {
         height: 32px;
       }
@@ -102,22 +91,11 @@ export default {
       }
     }
 
-    .nav-menu {
-      margin-right: auto;
-      font-family: $main-font-family;
-      font-size: 18px;
-      line-height: 22px;
-      color: $heading-grey;
-      margin-left: 100px;
-
-      a {
-        text-decoration: none;
-        margin-right: 75px;
-      }
-    }
-
     .avatar-wrapper {
+      float: right;
+      display: flex;
       cursor: pointer;
+      align-items: center;
     }
   }
 </style>

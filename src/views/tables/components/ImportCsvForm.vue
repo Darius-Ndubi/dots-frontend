@@ -145,7 +145,7 @@ export default {
             name: this.form.name,
             unique_column: this.form.unique_column
           },
-          uuid: this.table.tableUuid
+          uuid: this.table.table_uuid
         }).then(table => {
         this.$emit(EVENT_CLOSE)
         this.$notify({

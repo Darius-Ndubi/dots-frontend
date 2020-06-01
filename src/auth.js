@@ -8,22 +8,32 @@ import { workspaceActions } from '@/store/modules/workspace'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
-const whiteList = [/login/, /thank-you/, /register/] // no redirect whitelist
+const whiteList = [/login/, /thank-you/, /register/, /403/, /404/] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
   // start progress bar
   NProgress.start()
 
+  const hasToken = getToken()
+
   // set page title
   document.title = getPageTitle(to.meta.title)
 
   if (whiteList.some(rx => rx.test(to.path))) {
-    // in the free login whitelist, go directly
-    next()
+    // If a token exists redirect to home page instead
+    if (hasToken) {
+      next({ path: '/' })
+    } else {
+      // Thank you page can only be access if the previous page
+      //  was the registration page
+      if (to.name === 'ThankYou' && from.name !== 'Register') {
+        next({ path: '403' })
+      } else {
+        next()
+      }
+    }
   } else {
     // determine whether the user has logged in
-    const hasToken = getToken()
-
     if (hasToken) {
       if (to.path === '/login') {
         // if is logged in, redirect to the home page

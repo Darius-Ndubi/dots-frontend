@@ -1,15 +1,22 @@
 <template>
   <div class="register-container">
-    <el-form ref="registerForm" class="register-form" :model="formData" :rules="rules" label-width="100px">
+    <el-form
+      ref="registerForm"
+      class="register-form"
+      :model="formData"
+      :rules="rules"
+      label-width="100px"
+      label-position="top"
+    >
       <div class="header">
         <h2>{{ $t('register.createAccount') }}</h2>
       </div>
       <div class="form-group">
-        <el-form-item prop="firstName" :label="$t('register.firstName')">
-          <el-input v-model="formData.firstName" />
+        <el-form-item prop="first_name" :label="$t('register.firstName')">
+          <el-input v-model="formData.first_name" />
         </el-form-item>
-        <el-form-item prop="lastName" :label="$t('register.lastName')">
-          <el-input v-model="formData.lastName" />
+        <el-form-item prop="last_name" :label="$t('register.lastName')">
+          <el-input v-model="formData.last_name" />
         </el-form-item>
       </div>
       <div class="form-group">
@@ -24,8 +31,8 @@
         <el-form-item prop="password" :label="$t('register.password')">
           <el-input v-model="formData.password" show-password />
         </el-form-item>
-        <el-form-item class="confirm-password" prop="confirmPassword" :label="$t('register.confirmPassword')">
-          <el-input v-model="formData.confirmPassword" show-password />
+        <el-form-item class="confirm-password" prop="confirm_password" :label="$t('register.confirmPassword')">
+          <el-input v-model="formData.confirm_password" show-password />
         </el-form-item>
       </div>
       <div class="footer">
@@ -45,18 +52,18 @@ export default {
   data() {
     return {
       formData: {
-        firstName: '',
-        lastName: '',
+        first_name: '',
+        last_name: '',
         username: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirm_password: ''
       },
       rules: {
-        firstName: [
+        first_name: [
           { required: true, message: this.$t('general.requiredField'), trigger: 'blur' }
         ],
-        lastName: [
+        last_name: [
           { required: true, message: this.$t('general.requiredField'), trigger: 'blur' }
         ],
         username: [
@@ -70,7 +77,7 @@ export default {
           { required: true, message: this.$t('general.requiredField'), trigger: 'blur' },
           { min: 8, message: this.$t('register.minimumCharacters'), trigger: 'blur' }
         ],
-        confirmPassword: [
+        confirm_password: [
           { required: true, message: this.$t('general.requiredField'), trigger: 'blur' },
           { validator: this.passwordsMatch, trigger: 'blur' }
         ]
@@ -145,12 +152,16 @@ export default {
     .header {
       margin-bottom: 40px;
       color: $primary-color;
+      text-align: center;
+      font-size: 20px;
     }
 
     .el-form-item {
       border-radius: 5px;
       color: $dark-body-grey;
       margin-bottom: 30px;
+      padding: 0px 100px 0px 0px;
+      width: 250px;
     }
 
     .confirm-password {

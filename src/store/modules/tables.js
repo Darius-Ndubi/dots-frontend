@@ -30,7 +30,7 @@ const mutations = {
     state.tables = payload
   },
   [mutationTypes.SET_TABLE]: (state, payload) => {
-    state.tables[payload.tableUuid] = payload
+    state.tables[payload.table_uuid] = payload
     state.tables = { ...state.tables }
   },
   [mutationTypes.SET_TABLE_DETAILS]: (state, payload) => {
