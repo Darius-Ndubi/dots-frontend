@@ -10,7 +10,7 @@
     "lint": "eslint --ext .js,.vue src",
     "commit": "git-cz",
     "inspect": "vue-cli-service inspect",
-    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
     "serve:deploy": "serve -s dist"
   },
   "dependencies": {
