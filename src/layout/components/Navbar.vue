@@ -22,7 +22,7 @@
       >{{ item.label }}</router-link>
     </div>
     <div class="avatar-wrapper" @click="toggleDrawer">
-      <el-avatar shape="square">{{ nameInitials }}</el-avatar>
+      <el-avatar>{{ nameInitials }}</el-avatar>
     </div>
   </top-nav>
 </template>
