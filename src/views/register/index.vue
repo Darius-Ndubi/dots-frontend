@@ -1,6 +1,13 @@
 <template>
   <div class="register-container">
-    <el-form ref="registerForm" class="register-form" :model="formData" :rules="rules" label-width="100px">
+    <el-form
+      ref="registerForm"
+      class="register-form"
+      :model="formData"
+      :rules="rules"
+      label-width="100px"
+      label-position="top"
+    >
       <div class="header">
         <h2>{{ $t('register.createAccount') }}</h2>
       </div>
@@ -145,12 +152,16 @@ export default {
     .header {
       margin-bottom: 40px;
       color: $primary-color;
+      text-align: center;
+      font-size: 20px;
     }
 
     .el-form-item {
       border-radius: 5px;
       color: $dark-body-grey;
       margin-bottom: 30px;
+      padding: 0px 100px 0px 0px;
+      width: 250px;
     }
 
     .confirm-password {

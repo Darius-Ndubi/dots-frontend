@@ -11,6 +11,7 @@
     "commit": "git-cz",
     "inspect": "vue-cli-service inspect",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
+    "serve:deploy": "serve -s dist"
   },
   "dependencies": {
     "@hikaya/hakawati": "^0.1.3",
