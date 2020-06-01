@@ -1,4 +1,7 @@
 {
   "pluginsFile": "tests/e2e/plugins/index.js",
-  "baseUrl": "https://dots-dev.now.sh"
+  "baseUrl": "https://dots-fe-dev.hikaya.dev",
+  "env": {
+    "beUrl": "https://dots-be-dev.hikaya.dev/admin/"
+  }
 }

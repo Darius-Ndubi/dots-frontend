@@ -11,13 +11,13 @@ describe('Valid and invalid login', () => {
       })
     })
 
-    it('Logs in successfully', () => {
+    it('Logs in successfully.', () => {
       cy.visit('/')
       cy.get('.heading').should('contain', 'Log in to Dots')
-      cy.get('[placheholder="Email or username"]')
+      cy.get('[placeholder="Email or username"]')
         .type(data.admin)
         .should('have.value', data.admin)
-      cy.get('[placheholder="Password"]')
+      cy.get('[placeholder="Password"]')
         .type(data.adminPassowrd)
         .should('have.value', data.adminPassowrd)
       cy.get('button')
@@ -77,17 +77,17 @@ describe('Valid and invalid login', () => {
     })
 
     invalidTests.forEach(test => {
-      it(`Throws ${test.test}`, () => {
+      it(`Throws ${test.test}.`, () => {
         test.username === ''
           ? cy.log('username empty')
           : cy
-              .get('[placheholder="Email or username"]')
+              .get('[placeholder="Email or username"]')
               .type(test.username)
               .should('have.value', test.username)
         test.password === ''
           ? cy.log('password empty')
           : cy
-              .get('[placheholder="Password"]')
+              .get('[placeholder="Password"]')
               .type(test.password)
               .should('have.value', test.password)
         cy.get('button')
