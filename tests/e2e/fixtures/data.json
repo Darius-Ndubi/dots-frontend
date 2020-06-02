@@ -1,0 +1,12 @@
+{
+  "admin": "qa-dots",
+  "adminPassowrd": "hikaya2020!",
+  "adminFirstName": "QA",
+  "adminLastName": "Tester",
+
+  "newFN": "New",
+  "newLN": "User",
+  "newUN": "new_user",
+  "newEmail": "newuser@hikaya.io",
+  "newPassword": "new2020!#"
+}
