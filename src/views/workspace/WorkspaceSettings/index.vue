@@ -2,7 +2,7 @@
   <div>
     <el-row type="flex" justify="center" class="spacer">
       <el-col :span="24">
-        <h2>Workspace Details</h2>
+        <h2>{{ $t('workspace.workspaceDetails') }}</h2>
       </el-col>
     </el-row>
     <settings-form :workspace="getDefaultWorkspace" />

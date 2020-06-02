@@ -6,25 +6,26 @@
           <el-row class="mb-20">
             <el-col
               :span="18"
-            >Renaming the workspace will cause changes to your WorkspaceDetails URL</el-col>
+            >{{ $t('workspace.rename') }}.</el-col>
             <el-col :span="6" class="text-right">
-              <h-button size="medium" type="danger">Rename workspace</h-button>
+              <h-button size="medium" type="danger">{{ $t('workspace.action.rename') }}</h-button>
             </el-col>
           </el-row>
           <el-row class="mb-20">
             <el-col
               :span="18"
-            >Once you leave your workspace you will no longer have access to this Workspace. However any other Workspace you are in will not be affected.</el-col>
+            >
+            {{ $t('workspace.leave') }}.</el-col>
             <el-col :span="6" class="text-right">
-              <h-button size="medium" type="danger">Leave workspace</h-button>
+              <h-button size="medium" type="danger">{{ $t('workspace.action.leave') }}</h-button>
             </el-col>
           </el-row>
           <el-row class="mb-20">
             <el-col
               :span="18"
-            >Once you transfer your ownership, your role will be changed to Admin by default.</el-col>
+            >{{ $t('workspace.transfer') }}.</el-col>
             <el-col :span="6" class="text-right">
-              <h-button size="medium" type="danger">Transfer ownership</h-button>
+              <h-button size="medium" type="danger"> {{ $t('workspace.action.transfer') }} </h-button>
             </el-col>
           </el-row>
         </div>

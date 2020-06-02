@@ -98,6 +98,12 @@ export default {
     successConfigSave: '{table} configs were successfully saved'
   },
   workspace: {
+    settings: 'Workspace Settings',
+    workspaceDetails: 'Workspace Details',
+    details: 'Details',
+    people: 'People',
+    configutations: 'Configurations',
+    workspaceUsers: 'Workspace Users',
     welcome: 'Welcome',
     startByCreating: 'Start by creating a workspace',
     createWorkspace: 'Create Workspace',
@@ -110,6 +116,24 @@ export default {
     location: 'Location',
     urlHint: 'This will be the name of your workspace on Dots. Your URL will be: https://dots.hikaya.app/ws/{name}.',
     workspaceCreated: 'Workspace created successfully.',
-    workspaceFailure: 'Failed to create workspace.'
+    workspaceFailure: 'Failed to create workspace.',
+    rename: 'Renaming the workspace will cause changes to your WorkspaceDetails URL',
+    leave: 'Once you leave your workspace you will no longer have access to this Workspace. However any other Workspace you are in will not be affected',
+    transfer: 'Once you transfer your ownership, your role will be changed to Admin by default',
+    users: {
+      action: {
+        resendInvitation: 'Resend Invitation',
+        revokeInvitation: 'Revoke Invitation',
+        deactivateUser: 'Deactivate User'
+      }
+    },
+    action: {
+      search: 'Search user name or email',
+      filter: 'filter',
+      addNewUser: 'Add new user',
+      rename: 'Rename workspace',
+      leave: 'Leave workspace',
+      transfer: 'Transfer Ownership'
+    }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <el-table :data="users" style="width: 100%">
-    <el-table-column prop="fullName" label="Name" />
+    <el-table-column prop="full_name" label="Name" />
     <el-table-column prop="email" label="Email" />
     <el-table-column prop="lastLogin" label="Last login">
       <template slot-scope="scope">{{ $moment(scope.row.lastLogin).fromNow() }}</template>
@@ -21,9 +21,9 @@
             <i class="el-icon-more-outline el-dropdown-link" />
           </div>
           <template slot="items">
-            <el-dropdown-item>Resend Invitation</el-dropdown-item>
-            <el-dropdown-item>Revoce Invitation</el-dropdown-item>
-            <el-dropdown-item class="danger">Deactivate user</el-dropdown-item>
+            <el-dropdown-item>{{ $t('workspace.users.action.resendInvitation') }}</el-dropdown-item>
+            <el-dropdown-item>{{ $t('workspace.users.action.revokeInvitation') }}</el-dropdown-item>
+            <el-dropdown-item class="danger">{{ $t('workspace.users.action.deactivateUser') }}</el-dropdown-item>
           </template>
         </h-dropdown>
       </template>
