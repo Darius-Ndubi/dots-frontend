@@ -87,12 +87,8 @@ export default {
   },
   methods: {
     async logout() {
-      this.$confirm(this.$t('main.confirmLogout')).then(async() => {
-        await this.$store.dispatch('user/logout')
-        await this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-      }).catch((e) => {
-        console.log('action cancelled')
-      })
+      await this.$store.dispatch('user/logout')
+      await this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     },
     createWorkspace() {
       EventBus.$emit(TOGGLE_WORKSPACE_DRAWER)

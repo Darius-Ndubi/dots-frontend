@@ -11,7 +11,6 @@ export default {
     tables: 'Tables'
   },
   main: {
-    confirmLogout: 'Are you sure you want to log out?',
     profile: '{username} profile',
     addWorkspace: 'Add Workspace',
     workspaceSettings: 'Workspace Settings'
