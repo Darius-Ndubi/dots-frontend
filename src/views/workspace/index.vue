@@ -25,3 +25,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.el-tabs__header.is-left{
+  position: absolute;
+  left:0;
+}
+.el-tabs__content{
+  margin-left:250px
+}
+</style>

@@ -15,9 +15,9 @@
       :index="`${i+1}`"
       @click="$router.push({name: item.name})"
     >{{ item.label }}</el-menu-item>
-    <el-menu-item class="avatar-wrapper" @click="toggleDrawer">
-      <el-avatar shape="square">{{ nameInitials }}</el-avatar>
-    </el-menu-item>
+    <div class="avatar-wrapper" @click="toggleDrawer">
+      <el-avatar>{{ nameInitials }}</el-avatar>
+    </div>
   </top-nav>
 </template>
 
@@ -96,6 +96,16 @@ export default {
       display: flex;
       cursor: pointer;
       align-items: center;
+    }
+
+    .el-menu-item.is-active{
+      padding: 0px 25px;
+      height:50px;
+      line-height:50px
+    }
+      .el-menu-item{
+      height:50px;
+      line-height:50px
     }
   }
 </style>
