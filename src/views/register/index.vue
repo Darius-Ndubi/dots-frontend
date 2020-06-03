@@ -9,30 +9,53 @@
       label-position="top"
     >
       <div class="header">
-        <h2>{{ $t('register.createAccount') }}</h2>
+        <span>{{ $t('register.createAccount') }}</span>
       </div>
       <div class="form-group">
-        <el-form-item prop="first_name" :label="$t('register.firstName')">
-          <el-input v-model="formData.first_name" />
+        <el-form-item
+          prop="first_name"
+          :label="$t('register.firstName')"
+        >
+          <el-input
+            v-model="formData.first_name"
+            :class="{ 'dark-bg': formData.first_name }"
+          />
         </el-form-item>
         <el-form-item prop="last_name" :label="$t('register.lastName')">
-          <el-input v-model="formData.last_name" />
+          <el-input
+            v-model="formData.last_name"
+            :class="{ 'dark-bg': formData.last_name }"
+          />
         </el-form-item>
       </div>
       <div class="form-group">
         <el-form-item prop="username" :label="$t('register.username')">
-          <el-input v-model="formData.username" />
+          <el-input
+            v-model="formData.username"
+            :class="{ 'dark-bg': formData.username }"
+          />
         </el-form-item>
         <el-form-item prop="email" :label="$t('register.email')">
-          <el-input v-model="formData.email" />
+          <el-input
+            v-model="formData.email"
+            :class="{ 'dark-bg': formData.email }"
+          />
         </el-form-item>
       </div>
       <div class="form-group">
         <el-form-item prop="password" :label="$t('register.password')">
-          <el-input v-model="formData.password" show-password />
+          <el-input
+            v-model="formData.password"
+            show-password
+            :class="{ 'dark-bg': formData.password }"
+          />
         </el-form-item>
         <el-form-item class="confirm-password" prop="confirm_password" :label="$t('register.confirmPassword')">
-          <el-input v-model="formData.confirm_password" show-password />
+          <el-input
+            v-model="formData.confirm_password"
+            show-password
+            :class="{ 'dark-bg': formData.confirm_password }"
+          />
         </el-form-item>
       </div>
       <div class="footer">
@@ -122,7 +145,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .register-container {
     vertical-align: middle;
     min-height: 100%;
@@ -132,7 +155,7 @@ export default {
       position: relative;
       width: 600px;
       max-width: 100%;
-      padding: 160px 35px 35px 0;
+      padding: 100px 35px 35px 35px;
       margin: 0 auto;
       overflow: hidden;
 
@@ -142,10 +165,10 @@ export default {
     }
 
     .el-input {
-      height: 47px;
+      height: 47px;  // ! Was not applied when style tag was scoped
 
       input {
-        height: 47px;
+        height: 47px;  // ! Was not applied when style tag was scoped
       }
     }
 
@@ -153,24 +176,25 @@ export default {
       margin-bottom: 40px;
       color: $primary-color;
       text-align: center;
-      font-size: 20px;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 43px;
     }
 
     .el-form-item {
       border-radius: 5px;
-      color: $dark-body-grey;
+      // color: $dark-body-grey;
       margin-bottom: 30px;
       padding: 0px 100px 0px 0px;
       width: 250px;
     }
 
-    .confirm-password {
-      .el-form-item__label {
-        line-height: 1.5 !important;
-      }
+    .el-form-item__label {
+      padding: 0 0 0 0;
     }
 
     .footer {
+      padding: 25px 0 0 0;
       .el-button {
         float: right;
         min-width: 30%;
@@ -181,7 +205,8 @@ export default {
 
       .login-container {
         float: left;
-        line-height: 20px;
+        font-size: 16px;
+        line-height: 19px;
 
         .login {
           float: left;
@@ -189,5 +214,13 @@ export default {
         }
       }
     }
+  }
+</style>
+
+<style lang="scss">
+  $bg: $background-color;
+
+  .dark-bg > input {
+    background-color: $bg;
   }
 </style>

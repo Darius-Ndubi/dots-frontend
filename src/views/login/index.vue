@@ -10,7 +10,10 @@
       <div class="header">
         <span class="heading">{{ $t('login.header') }}</span>
       </div>
-      <el-form-item prop="username">
+      <el-form-item
+        prop="username"
+        :class="{ 'dark-bg': formData.username }"
+      >
         <span class="svg-container">
           <svg-icon icon-name="user" />
         </span>
@@ -20,7 +23,10 @@
         />
       </el-form-item>
       <el-tooltip v-model="capsTooltip" :content="$t('login.capsLockOn')" placement="right" manual>
-        <el-form-item prop="password">
+        <el-form-item
+          prop="password"
+          :class="{ 'dark-bg': formData.password }"
+        >
           <span class="svg-container">
             <svg-icon icon-name="password" />
           </span>
@@ -170,10 +176,10 @@ export default {
 
     .el-form-item {
       border: 1px solid rgba(0, 0, 0, 0.2);
-      background: $bg;
+      // background: $bg;
       border-radius: 6px;
       box-sizing: border-box;
-      color: $dark-body-grey;
+      // color: $dark-body-grey;
     }
   }
 </style>
@@ -182,6 +188,10 @@ export default {
   $bg: $heading-grey;
   $light_gray:$heading-grey;
   $cursor: #fff;
+
+  .dark-bg {
+    background: $background-color;
+  }
 
   .login-container {
     vertical-align: middle;
