@@ -1,7 +1,7 @@
 <template>
   <el-col :span="12">
-    <h-card class="spacer">
-      <el-row slot="title">
+    <h-card class="spacer h-card">
+      <el-row slot="title" class="body-2-bold">
         <h2>Label 1</h2>
       </el-row>
       <el-row slot="items">

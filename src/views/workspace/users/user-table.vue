@@ -54,3 +54,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+// removes additional default line below the table on workspace user table
+.el-table--border::after, .el-table--group::after, .el-table::before {
+    background-color: transparent;
+}
+
+</style>

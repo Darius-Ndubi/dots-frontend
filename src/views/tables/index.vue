@@ -9,9 +9,9 @@
               {{ $t('tables.importLabel') }}<i class="el-icon-arrow-down el-icon--right" />
             </el-button>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item :command="'csv'">Csv</el-dropdown-item>
-              <el-dropdown-item :command="'kobo'">KOBO</el-dropdown-item>
-              <el-dropdown-item :command="'ona'">ONA</el-dropdown-item>
+              <el-dropdown-item :command="'csv'">CSV</el-dropdown-item>
+              <el-dropdown-item :command="'kobo'">Kobo Toolbox</el-dropdown-item>
+              <el-dropdown-item :command="'ona'">Ona</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -54,6 +54,7 @@
                 <h-button
                   type="text"
                   size="small"
+                  dark-text
                   @click="$router.push({name: 'TableDetails', params: { tableUuid:scope.row.table_uuid }})"
                 >
                   Detail
@@ -61,6 +62,7 @@
                 <h-button
                   type="text"
                   size="small"
+                  dark-text
                   @click="editTable(scope.row)"
                 >
                   Edit
@@ -68,6 +70,7 @@
                 <h-button
                   type="text"
                   size="small"
+                  dark-text
                   @click="deleteTable(scope.row)"
                 >
                   Delete
@@ -196,12 +199,14 @@ export default {
 
 <style lang="scss" scoped>
 .table-list {
+  padding: 10px 0px;
   display: flex;
   justify-content: center;
   &__item-list {
-    width: 80%;
+    width: 95%;
   }
   &__import-btn {
+    padding: 25px 10px 25px 10px;
     display: flex;
     flex-direction: row-reverse;
   }

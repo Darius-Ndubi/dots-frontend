@@ -1,5 +1,5 @@
 <template>
-  <top-nav class="navbar" default-active="1">
+  <top-nav class="navbar top-nav" default-active="1">
     <el-menu-item
       class="brand"
       index="0"
@@ -77,6 +77,8 @@ export default {
     .brand {
       display: inline-flex;
       align-items: center;
+      margin: 5px 25px 0px 0px;
+      padding: 0px 25px 0px 25px;
       .logo {
         height: 32px;
       }
@@ -89,6 +91,9 @@ export default {
         font-size: 32px;
         line-height: 38px;
       }
+      &.el-menu-item.is-active {
+        background-color: transparent;
+      }
     }
 
     .avatar-wrapper {
@@ -96,6 +101,8 @@ export default {
       display: flex;
       cursor: pointer;
       align-items: center;
+      padding: 7px 15px 7px 25px;
+      margin-left: 25px;
     }
 
     .el-menu-item.is-active{

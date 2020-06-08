@@ -1,7 +1,7 @@
 <template>
   <el-row type="flex" justify="center" class="spacer">
     <el-col :span="24">
-      <h-card class="card-danger">
+      <h-card class="card-danger h-plain-card">
         <div slot="items">
           <el-row class="mb-20">
             <el-col
@@ -15,7 +15,7 @@
             <el-col
               :span="18"
             >
-            {{ $t('workspace.leave') }}.</el-col>
+              {{ $t('workspace.leave') }}.</el-col>
             <el-col :span="6" class="text-right">
               <h-button size="medium" type="danger">{{ $t('workspace.action.leave') }}</h-button>
             </el-col>

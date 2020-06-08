@@ -18,7 +18,7 @@
         <span class="logout body-reg" @click="logout"><svg-icon icon-name="logout" /> {{ $t('navbar.logout') }}</span>
       </div>
       <div class="workspaces">
-        <h-card class="default">
+        <h-card class="default h-card">
           <div slot="items">
             <span class="heading">{{ getDefaultWorkspace.name }}</span>
             <br>
@@ -33,7 +33,7 @@
             :xs="12"
             :md="8"
           >
-            <h-card>
+            <h-card class="h-card">
               <div slot="items">
                 <span class="body-bold">{{ ws.name }}</span>
                 <br>
@@ -44,8 +44,20 @@
         </el-row>
       </div>
       <div class="footer">
-        <h-button icon="el-icon-circle-plus-outline" @click="createWorkspace">{{ $t('main.addWorkspace') }}</h-button>
-        <h-button icon="el-icon-s-tools" @click="goToWorkspaceSettings">{{ $t('main.workspaceSettings') }}</h-button>
+        <h-button
+          icon="el-icon-circle-plus-outline"
+          workspace-button
+          @click="createWorkspace"
+        >
+          {{ $t('main.addWorkspace') }}
+        </h-button>
+        <h-button
+          icon="el-icon-s-tools"
+          workspace-button
+          @click="goToWorkspaceSettings"
+        >
+          {{ $t('main.workspaceSettings') }}
+        </h-button>
       </div>
     </div>
   </h-drawer>

@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h-tab tab-position="left" active-name="first">
+    <h-tab
+      tab-position="left"
+      active-name="first"
+      class="h-tab"
+    >
       <el-tab-pane :label="$t('workspace.settings')" disabled />
       <el-tab-pane label="Workspace 1" disabled />
       <el-tab-pane :label="$t('workspace.details')" name="first">

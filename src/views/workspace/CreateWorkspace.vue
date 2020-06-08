@@ -20,30 +20,56 @@
       :rules="rules"
       :model="workspaceForm"
     >
-      <el-form-item :label="$t('workspace.workspaceName')" prop="name">
-        <h-input v-model="workspaceForm.name" :placeholder="$t('workspace.myWorkspace')" />
+      <el-form-item
+        :label="$t('workspace.workspaceName')"
+        prop="name"
+      >
+        <h-input
+          v-model="workspaceForm.name"
+          :placeholder="$t('workspace.myWorkspace')"
+        />
         <span
           v-if="workspaceForm.name"
           class="info url-hint"
         >{{ $t('workspace.urlHint', { name: slug }) }}</span>
       </el-form-item>
-      <el-form-item :label="$t('workspace.workspaceEmail')" prop="email">
-        <h-input v-model="workspaceForm.email" placeholder="info@my-workspace.com" />
+      <el-form-item
+        :label="$t('workspace.workspaceEmail')"
+        prop="email"
+      >
+        <h-input
+          v-model="workspaceForm.email"
+          placeholder="Organization email"
+        />
       </el-form-item>
       <el-form-item label="Description">
-        <input-text-area v-model="workspaceForm.description" />
+        <h-input
+          v-model="workspaceForm.description"
+          type="textarea"
+          rows="4"
+        />
       </el-form-item>
-      <h-label-input
+      <h-input
         v-model="workspaceForm.website"
         :label="$t('workspace.website')"
       />
-      <h-label-input
+      <h-input
         v-model="workspaceForm.location"
         :label="$t('workspace.location')"
       />
       <div class="buttons">
-        <h-button @click="show = !show">{{ $t('actionVerbs.cancel') }}</h-button>
-        <h-button type="primary" @click="createWorkspace">{{ $t('actionVerbs.save') }}</h-button>
+        <h-button
+          dark-text
+          @click="show = !show"
+        >
+          {{ $t('actionVerbs.cancel') }}
+        </h-button>
+        <h-button
+          type="primary"
+          @click="createWorkspace"
+        >
+          {{ $t('actionVerbs.save') }}
+        </h-button>
       </div>
     </h-form>
   </h-drawer>
