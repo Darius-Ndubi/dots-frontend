@@ -22,7 +22,7 @@
           :placeholder="$t('login.username')"
         />
       </el-form-item>
-      <el-tooltip v-model="capsTooltip" :content="$t('login.capsLockOn')" placement="right" manual>
+      <el-tooltip v-model="capsTooltip" :content="$t('login.capsLockOn')" tabindex="-1" placement="right" manual>
         <el-form-item
           prop="password"
           :class="{ 'dark-bg': formData.password }"
