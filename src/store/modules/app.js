@@ -1,14 +1,21 @@
 import Cookies from 'js-cookie'
 import { getLanguage } from '@/lang/index'
 
-const state = {
-  language: getLanguage()
+function initialState() {
+  return {
+    language: getLanguage()
+  }
 }
+
+const state = initialState()
 
 const mutations = {
   SET_LANGUAGE: (state, language) => {
     state.language = language
     Cookies.set('language', language)
+  },
+  RESET: state => {
+    Object.assign(state, initialState())
   }
 }
 

@@ -9,12 +9,16 @@ import {
 } from '@/api/table'
 import { mapArrayEntities } from '@/utils/data.utils'
 
-const state = {
-  tables: {},
-  dataset: {},
-  geoJsonData: {},
-  thirdPartyForms: []
+function initialState() {
+  return {
+    tables: {},
+    dataset: {},
+    geoJsonData: {},
+    thirdPartyForms: []
+  }
 }
+
+const state = initialState()
 
 const mutationTypes = {
   SET_TABLES: '[Tables] Set Tables',
@@ -45,6 +49,9 @@ const mutations = {
   },
   [mutationTypes.SET_THIRD_PARTY_FORMS]: (state, payload) => {
     state.thirdPartyForms = payload
+  },
+  RESET: state => {
+    Object.assign(state, initialState())
   }
 }
 

@@ -24,12 +24,8 @@ const mutations = {
     state.defaultWorkspace = payload
   },
   // https://github.com/vuejs/vuex/issues/1118#issuecomment-356286218
-  RESET: (state, payload) => {
-    console.log('Workspace reseting state')
-    const s = initialState()
-    Object.keys(s).forEach(key => {
-      state[key] = s[key]
-    })
+  RESET: state => {
+    Object.assign(state, initialState())
   }
 }
 

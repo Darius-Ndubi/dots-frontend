@@ -1,11 +1,15 @@
 import { login, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken, getRefreshToken, removeRefreshToken, setRefreshToken } from '@/utils/auth'
 
-const state = {
-  token: getToken(),
-  refreshToken: getRefreshToken(),
-  user: {}
+function initialState() {
+  return {
+    token: getToken(),
+    refreshToken: getRefreshToken(),
+    user: {}
+  }
 }
+
+const state = initialState()
 
 const mutations = {
   SET_TOKEN: (state, token) => {
@@ -16,6 +20,9 @@ const mutations = {
   },
   SET_USER: (state, user) => {
     state.user = user
+  },
+  RESET: state => {
+    Object.assign(state, initialState())
   }
 }
 
@@ -53,9 +60,9 @@ const actions = {
 
   logout({ commit, state, dispatch }) {
     return new Promise((resolve, reject) => {
-      commit('SET_TOKEN', '')
-      commit('SET_REFRESH_TOKEN', '')
       commit('workspace/RESET', null, { root: true })
+      commit('user/RESET', null, { root: true })
+      commit('tables/RESET', null, { root: true })
       removeToken()
       removeRefreshToken()
 
