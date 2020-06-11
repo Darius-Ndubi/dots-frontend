@@ -43,6 +43,17 @@ export default {
     description: 'Please confirm your email to log in to the application.',
     logIn: 'Log in'
   },
+  userActivation: {
+    success: {
+      title: 'Your account has been verified!',
+      description: 'Please login to continue.',
+      action: 'Log in'
+    },
+    failed: {
+      title: 'Could not verify the account',
+      description: 'This could be a broken link',
+    }
+  },
   error: {
     404: {
       title: '404!',

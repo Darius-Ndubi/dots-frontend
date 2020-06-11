@@ -1,4 +1,4 @@
-import { login, getInfo } from '@/api/user'
+import { login, getInfo, activateUser } from '@/api/user'
 import { getToken, setToken, removeToken, getRefreshToken, removeRefreshToken, setRefreshToken } from '@/utils/auth'
 
 function initialState() {
@@ -75,6 +75,16 @@ const actions = {
       commit('SET_TOKEN', token)
       setToken(token)
       resolve()
+    })
+  },
+
+  activateUser({}, activation_key) {
+    return new Promise((resolve, reject) => {
+      activateUser(activation_key).then(response => {
+        resolve(response)
+      }).catch(error => {
+        reject(error)
+      })
     })
   },
 

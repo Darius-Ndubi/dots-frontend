@@ -8,7 +8,7 @@ import { workspaceActions } from '@/store/modules/workspace'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
-const whiteList = [/login/, /thank-you/, /register/, /403/, /404/] // no redirect whitelist
+const whiteList = [/login/, /thank-you/, /register/, /403/, /404/, /activate/] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
   // start progress bar

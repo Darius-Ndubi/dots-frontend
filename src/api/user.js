@@ -22,3 +22,11 @@ export function register(data) {
     data
   })
 }
+
+export function activateUser(data) {
+  return request({
+    url: `/activate/${data}`,
+    method: 'get',
+    data
+  })
+}

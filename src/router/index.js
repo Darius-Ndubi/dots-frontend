@@ -42,6 +42,11 @@ const routes = [
     ]
   },
   {
+    path: '/activate/:token',
+    component: () => import('@/views/user/activate.vue'),
+    props: true
+  },
+  {
     path: '/thank-you',
     component: Auth,
     children: [
