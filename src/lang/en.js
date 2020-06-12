@@ -69,6 +69,7 @@ export default {
   tables: {
     importLabel: 'Import Data',
     tableConfig: 'Configurations',
+    tableSettings: 'Settings',
     setConfigs: 'Set Table Configurations',
     importCsv: 'Import CSV Data',
     listTable: {
@@ -93,6 +94,13 @@ export default {
       longitude: 'Longitude field',
       geoLocation: 'Geolocation point field',
       mapToolTipField: 'Point tool-tip field'
+    },
+    tableSettingsForm: {
+      deleteTable: 'Delete',
+      exportTable: 'Export',
+      tableName: 'Table name',
+      ownerName: 'Owner',
+      source: 'Source'
     }
   },
   actionVerbs: {
