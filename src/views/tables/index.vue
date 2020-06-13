@@ -1,5 +1,24 @@
 <template>
   <div class="table-list">
+    <h-drawer
+      :title="'Layers'"
+      :visible="true"
+      size="26%"
+      :show-close="false"
+      :wrapper-closable="false"
+      direction="ltr"
+      :modal="false"
+      class="data-drawer"
+    >
+      <div>Name of the table</div>
+
+      <div v-for="(layer, i) in layers" :key="i">
+        <div>
+          {{ layer.title }}
+          <h-switch />
+        </div>
+      </div>
+    </h-drawer>
 
     <template>
       <div class="table-list__item-list">
@@ -116,9 +135,21 @@ export default {
       loading: false,
       currentTable: null,
       tableSource: '',
-      thirdPartyForms: null
+      thirdPartyForms: null,
+      layers: [
+        {
+          title: 'Layer 1'
+        },
+        {
+          title: 'Layer 2'
+        },
+        {
+          title: 'Layer 3'
+        }
+      ]
     }
   },
+
   computed: {
     ...mapGetters('tables', {
       tables: `getAllTables`
