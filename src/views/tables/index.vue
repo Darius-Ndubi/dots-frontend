@@ -1,23 +1,49 @@
 <template>
   <div class="table-list">
     <h-drawer
-      :title="'Layers'"
       :visible="true"
       size="26%"
       :show-close="false"
       :wrapper-closable="false"
       direction="ltr"
       :modal="false"
-      class="data-drawer"
+      class="layers-drawer"
+      :with-header="false"
     >
-      <div>Name of the table</div>
+      <div class="title">Layers</div>
+      <div class="subtitle">Baseline Survey</div>
 
-      <div v-for="(layer, i) in layers" :key="i">
-        <div>
-          {{ layer.title }}
-          <h-switch />
+      <div class="layers">
+
+        <div
+          v-for="(layer, i) in layers"
+          :key="i"
+          class="layer"
+        >
+          <div>{{ layer.title }}</div>
+          <div style="display: flex">
+            <h-switch />
+            <h-dropdown>
+              <div slot="title">
+                <i class="el-icon-more el-icon--right" />
+              </div>
+              <template slot="items">
+                <el-dropdown-item>Edit layer</el-dropdown-item>
+                <el-dropdown-item>Delete layer</el-dropdown-item>
+              </template>
+            </h-dropdown>
+          </div>
+
         </div>
       </div>
+      <h-button
+        icon="el-icon-circle-plus-outline"
+        class="add-layer__button"
+        workspace-button
+      >
+        <!-- {{ $t('main.addWorkspace') }} -->
+        Add New Layer
+      </h-button>
     </h-drawer>
 
     <template>
@@ -136,15 +162,37 @@ export default {
       currentTable: null,
       tableSource: '',
       thirdPartyForms: null,
+      // ! WIP for data layers
       layers: [
         {
-          title: 'Layer 1'
+          title: 'Percentage of health spending'
         },
         {
-          title: 'Layer 2'
+          title: 'Population by district'
         },
         {
-          title: 'Layer 3'
+          title: 'Hazard area mapping'
+        },
+        {
+          title: 'Percentage of health spending'
+        },
+        {
+          title: 'Population by district'
+        },
+        {
+          title: 'Hazard area mapping'
+        },
+        {
+          title: 'Percentage of health spending'
+        },
+        {
+          title: 'Population by district'
+        },
+        {
+          title: 'Hazard area mapping'
+        },
+        {
+          title: 'Population by district'
         }
       ]
     }
@@ -241,11 +289,44 @@ export default {
     display: flex;
     flex-direction: row-reverse;
   }
+
+  .title {
+    padding-top: 50px;
+  }
+
+  .subtitle {
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+
+  .layers {
+    height: 80%;
+    .layer {
+      padding-bottom: 20px;
+    }
+  }
+
+  .add-layer__button {
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    margin: auto 0 35px 0;
+  }
 }
 
 .el-button--text {
   padding: 1.5px 4px;
   border-radius: 30px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.layers {
+  display: flex;
+  flex-direction: column;
+
+  .layer {
+    display: flex;
+    justify-content: space-between  ;
+  }
 }
 </style>
