@@ -1,4 +1,5 @@
-import { login, getInfo, activateUser } from '@/api/user'
+import { login, getInfo, activateUser, resendActivationEmail } from '@/api/user'
+
 import { getToken, setToken, removeToken, getRefreshToken, removeRefreshToken, setRefreshToken } from '@/utils/auth'
 
 function initialState() {
@@ -95,6 +96,16 @@ const actions = {
       removeToken()
       removeRefreshToken()
       resolve()
+    })
+  },
+
+  resendActivationEmail({}, username) {
+    return new Promise((resolve, reject) => {
+      resendActivationEmail({ username }).then(response => {
+        resolve(response)
+      }).catch(error => {
+        reject(error)
+      })
     })
   }
 }

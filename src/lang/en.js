@@ -64,6 +64,13 @@ export default {
       title: '403!',
       description: 'This action is forbidden',
       action: 'GO HOME'
+    },
+    not_verified: {
+      description: 'Please verify your email before logging in ',
+      action: 'Resend Email'
+    },
+    reverification: {
+      description: 'An email has been sent. Please check your email.'
     }
   },
   tables: {
