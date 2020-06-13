@@ -78,3 +78,14 @@ export function getThirdPartyForms(source) {
     method: 'get'
   })
 }
+
+/**
+ * Get Layers of a Table/Data
+ * ! WIP
+ */
+export function getMapLayers(table_id) {
+  return request({
+    url: `/maplayer`,
+    method: 'get'
+  })
+}
