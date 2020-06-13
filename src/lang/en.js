@@ -8,7 +8,7 @@ export default {
     dashboard: 'Dashboard',
     maps: 'Maps',
     reports: 'Reports',
-    tables: 'Tables'
+    data: 'Data'
   },
   main: {
     profile: '{username} profile',
@@ -51,7 +51,7 @@ export default {
     },
     failed: {
       title: 'Could not verify the account',
-      description: 'This could be a broken link',
+      description: 'This could be a broken link'
     }
   },
   error: {

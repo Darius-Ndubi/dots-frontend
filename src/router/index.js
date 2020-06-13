@@ -150,7 +150,7 @@ const routes = [
         path: '',
         component: () =>
           import(/* webpackChunkName: "tables" */ '@/views/tables/index.vue'),
-        name: 'Tables',
+        name: 'Data',
         meta: {
           title: 'Table List'
         }
