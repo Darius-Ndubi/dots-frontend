@@ -1,17 +1,10 @@
 <template>
   <div class="table-list">
-    <h-drawer
-      :visible="true"
-      size="26%"
-      :show-close="false"
-      :wrapper-closable="false"
-      direction="ltr"
-      :modal="false"
-      class="layers-drawer"
-      :with-header="false"
-    >
-      <div class="title">Layers</div>
-      <div class="subtitle">Baseline Survey</div>
+    <div class="sidebar">
+      <div class="header">
+        <div class="title">Layers</div>
+        <div class="subtitle">Baseline Survey</div>
+      </div>
 
       <div class="layers">
 
@@ -36,16 +29,18 @@
 
         </div>
       </div>
-      <h-button
-        icon="el-icon-circle-plus-outline"
-        class="add-layer__button"
-        workspace-button
-      >
-        <!-- {{ $t('main.addWorkspace') }} -->
-        Add New Layer
-      </h-button>
-    </h-drawer>
 
+      <div class="add-layer__container">
+        <h-button
+          icon="el-icon-circle-plus-outline"
+          class="add-layer__button"
+          workspace-button
+        >
+          <!-- {{ $t('main.addWorkspace') }} -->
+          Add New Layer
+        </h-button>
+      </div>
+    </div>
     <template>
       <div class="table-list__item-list">
         <div class="table-list__import-btn">
@@ -189,6 +184,54 @@ export default {
           title: 'Population by district'
         },
         {
+          title: 'Percentage of health spending'
+        },
+        {
+          title: 'Population by district'
+        },
+        {
+          title: 'Hazard area mapping'
+        },
+        {
+          title: 'Percentage of health spending'
+        },
+        {
+          title: 'Population by district'
+        },
+        {
+          title: 'Hazard area mapping'
+        },
+        {
+          title: 'Percentage of health spending'
+        },
+        {
+          title: 'Population by district'
+        },
+        {
+          title: 'Percentage of health spending'
+        },
+        {
+          title: 'Population by district'
+        },
+        {
+          title: 'Hazard area mapping'
+        },
+        {
+          title: 'Percentage of health spending'
+        },
+        {
+          title: 'Population by district'
+        },
+        {
+          title: 'Hazard area mapping'
+        },
+        {
+          title: 'Percentage of health spending'
+        },
+        {
+          title: 'Population by district'
+        },
+        {
           title: 'Hazard area mapping'
         },
         {
@@ -281,8 +324,10 @@ export default {
   padding: 10px 0px;
   display: flex;
   justify-content: center;
+  margin-left: 0;
+
   &__item-list {
-    width: 95%;
+    width:70%;
   }
   &__import-btn {
     padding: 25px 10px 25px 10px;
@@ -290,27 +335,64 @@ export default {
     flex-direction: row-reverse;
   }
 
-  .title {
-    padding-top: 50px;
-  }
+  .sidebar {
+    width: 25%;
+    position: fixed;
+    padding-left: 25px;
+    padding-right: 13px;
+    left: 0;
+    border-color: black;
+    border-style: dotted;
+    height: calc(100% - 95px);
+    overflow: scroll;
 
-  .subtitle {
-    padding-top: 10px;
-    padding-bottom: 30px;
-  }
+    .title {
+      padding-top: 50px;
+    }
 
-  .layers {
-    height: 80%;
-    .layer {
-      padding-bottom: 20px;
+    .subtitle {
+      padding-top: 10px;
+      padding-bottom: 30px;
+    }
+
+    .layers {
+      height: 80%;
+      .layer {
+        padding-bottom: 20px;
+      }
+    }
+
+    .add-layer__container {
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      left: 0;
+
+      width: inherit;
+      padding: inherit;
+      margin: inherit;
+
+      // Background to hide layers list if too long
+      background: white;
+      height: 100px;
+      border-top: black dotted;
     }
   }
 
   .add-layer__button {
     position: absolute;
     bottom: 0;
-    width: 50%;
     margin: auto 0 35px 0;
+    color: black;
+  }
+
+  .table-list__item-list {
+    position: absolute;
+    right: 0;
   }
 }
 
