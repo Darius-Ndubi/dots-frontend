@@ -23,13 +23,21 @@ export function register(data) {
   })
 }
 
+export function resetPassword(data) {
+  return request({
+    url: '/reset_password',
+    method: 'post',
+    data
+  })
+}
+
 export function resendActivationEmail(data) {
   return request({
     url: '/resend_activation',
     method: 'post',
     data
   })
-}    
+}
 
 export function activateUser(data) {
   return request({

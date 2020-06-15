@@ -59,6 +59,31 @@ const routes = [
     ]
   },
   {
+    path: '/forgot-password',
+    component: Auth,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/login/forgot-password/index.vue'),
+        name: 'ForgotPassword',
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/reset/:token',
+    component: Auth,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/login/reset-password/index.vue'),
+        name: 'ResetPassword',
+        hidden: true,
+        props: true
+      }
+    ]
+  },
+  {
     path: '/dashboard',
     redirect: 'ws/redirect'
   },

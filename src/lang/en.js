@@ -43,6 +43,19 @@ export default {
     description: 'Please confirm your email to log in to the application.',
     logIn: 'Log in'
   },
+  forgotPassword: {
+    title: 'Reset your password',
+    description: 'Enter your user account\'s email address and we will send you a password reset link.',
+    enterEmail: 'Enter email',
+    sendPassword: 'Send password reset email',
+    emailSent: 'An email has been sent. Please check your email.'
+  },
+  resetPassword: {
+    title: 'Set new password',
+    setPassword: 'Set password',
+    invalidToken: 'Invalid token',
+    success: 'Password reset successfully'
+  },
   userActivation: {
     success: {
       title: 'Your account has been verified!',
@@ -51,7 +64,7 @@ export default {
     },
     failed: {
       title: 'Could not verify the account',
-      description: 'This could be a broken link',
+      description: 'This could be a broken link'
     }
   },
   error: {

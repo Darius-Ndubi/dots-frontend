@@ -1,4 +1,4 @@
-import { login, getInfo, activateUser, resendActivationEmail } from '@/api/user'
+import { login, getInfo } from '@/api/user'
 
 import { getToken, setToken, removeToken, getRefreshToken, removeRefreshToken, setRefreshToken } from '@/utils/auth'
 
@@ -79,16 +79,6 @@ const actions = {
     })
   },
 
-  activateUser({}, activation_key) {
-    return new Promise((resolve, reject) => {
-      activateUser(activation_key).then(response => {
-        resolve(response)
-      }).catch(error => {
-        reject(error)
-      })
-    })
-  },
-
   resetToken({ commit }) {
     return new Promise(resolve => {
       commit('SET_TOKEN', '')
@@ -96,16 +86,6 @@ const actions = {
       removeToken()
       removeRefreshToken()
       resolve()
-    })
-  },
-
-  resendActivationEmail({}, username) {
-    return new Promise((resolve, reject) => {
-      resendActivationEmail({ username }).then(response => {
-        resolve(response)
-      }).catch(error => {
-        reject(error)
-      })
     })
   }
 }

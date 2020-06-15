@@ -6,7 +6,7 @@
         <p class="body-2-reg">{{ $t('userActivation.success.description') }}</p>
         <h-button type="primary" @click="goToLogin">{{ $t('userActivation.success.action') }} </h-button>
       </el-col>
-       <el-col v-show="!loading && !success">
+      <el-col v-show="!loading && !success">
         <h2 class="title">{{ $t('userActivation.failed.title') }}</h2>
         <p class="body-2-reg">{{ $t('userActivation.failed.description') }}</p>
       </el-col>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { activateUser } from '@/api/user'
+
 export default {
   name: 'UserActivation',
   props: {
@@ -32,15 +34,13 @@ export default {
   },
   created() {
     this.activation_key = this.$route.params.token
-    this.$store.dispatch('user/activateUser', this.activation_key)
-      .then(() => {
-        this.success = true
-        this.loading = false
-      })
-      .catch((e) => {
-        this.success = false
-        this.loading = false
-      })
+    activateUser(this.activation_key).then(() => {
+      this.success = true
+      this.loading = false
+    }).catch((e) => {
+      this.success = false
+      this.loading = false
+    })
   },
   updated() {
     this.activation_key = this.$route.params.token

@@ -64,7 +64,7 @@
         </el-form-item>
       </el-tooltip>
       <div class="forgot-password-container">
-        <router-link class="forgot-password body-reg" to="">{{ $t('login.forgotPassword') }}</router-link>
+        <router-link class="forgot-password body-reg" :to="{name: 'ForgotPassword'}">{{ $t('login.forgotPassword') }}</router-link>
       </div>
       <div class="actions">
         <span>{{ $t('login.noAccount') }}<br><router-link class="register" :to="{name: 'Register'}">{{ $t('register.register') }}</router-link></span>
@@ -75,6 +75,8 @@
 </template>
 
 <script>
+
+import { resendActivationEmail } from '@/api/user'
 
 export default {
   name: 'Login',
@@ -160,14 +162,12 @@ export default {
 
     resendEmail() {
       this.verifyError = false
-      this.$store.dispatch('user/resendActivationEmail', this.formData.username)
-        .then(() => {
-          this.emailResent = true
-          this.loading = false
-        })
-        .catch((e) => {
-          this.loading = false
-        })
+      resendActivationEmail({ username: this.formData.username }).then(() => {
+        this.emailResent = true
+        this.loading = false
+      }).catch((e) => {
+        this.loading = false
+      })
       this.verifyError = false
       this.emailResent = true
     }
