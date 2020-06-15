@@ -1,63 +1,67 @@
 <template>
   <h-drawer
-    :title="addWorkspaceTitle"
     :visible.sync="show"
-    size="48%"
     :show-close="false"
-    :wrapper-closable="false"
     direction="ltr"
     :modal="false"
-    class="create-workspace-drawer"
+    size="48%"
+    :with-header="false"
     @closed="clearFields"
     @opened="slug = createSlug(8)"
   >
-    <h-form
-      ref="workspaceForm"
-      v-loading="creatingWorkspace"
-      class="create-workspace-form"
-      label-position="left"
-      label-width="160px"
-      :rules="rules"
-      :model="workspaceForm"
-    >
-      <el-form-item
-        :label="$t('workspace.workspaceName')"
-        prop="name"
-      >
-        <h-input
-          v-model="workspaceForm.name"
-          :placeholder="$t('workspace.myWorkspace')"
-        />
-        <span
-          v-if="workspaceForm.name"
-          class="info url-hint"
-        >{{ $t('workspace.urlHint', { name: slug }) }}</span>
-      </el-form-item>
-      <el-form-item
-        :label="$t('workspace.workspaceEmail')"
-        prop="email"
-      >
-        <h-input
-          v-model="workspaceForm.email"
-          placeholder="Organization email"
-        />
-      </el-form-item>
-      <el-form-item label="Description">
-        <h-input
-          v-model="workspaceForm.description"
-          type="textarea"
-          rows="4"
-        />
-      </el-form-item>
-      <h-input
-        v-model="workspaceForm.website"
-        :label="$t('workspace.website')"
-      />
-      <h-input
-        v-model="workspaceForm.location"
-        :label="$t('workspace.location')"
-      />
-      <div class="buttons">
+    <div class="form__container">
+      <div class="el-drawer__header el-workspace__header">
+        <header><span role="heading" tabindex="0" title="Add Workspace">Add Workspace</span></header>
+      </div>
+      <div class="create-workspace-form">
+        <h-form
+          ref="workspaceForm"
+          v-loading="creatingWorkspace"
+          label-position="left"
+          label-width="160px"
+          :rules="rules"
+          :model="workspaceForm"
+        >
+          <el-form-item
+            :label="$t('workspace.workspaceName')"
+            prop="name"
+          >
+            <h-input
+              v-model="workspaceForm.name"
+              :placeholder="$t('workspace.myWorkspace')"
+            />
+            <span
+              v-if="workspaceForm.name"
+              class="info url-hint"
+            >{{ $t('workspace.urlHint', { name: slug }) }}</span>
+          </el-form-item>
+          <el-form-item
+            :label="$t('workspace.workspaceEmail')"
+            prop="email"
+          >
+            <h-input
+              v-model="workspaceForm.email"
+              placeholder="Organization email"
+            />
+          </el-form-item>
+          <el-form-item label="Description">
+            <h-input
+              v-model="workspaceForm.description"
+              type="textarea"
+              rows="4"
+            />
+          </el-form-item>
+          <h-input
+            v-model="workspaceForm.website"
+            :label="$t('workspace.website')"
+          />
+          <h-input
+            v-model="workspaceForm.location"
+            :label="$t('workspace.location')"
+          />
+        </h-form>
+      </div>
+      <div class="footer">
         <h-button
           dark-text
           @click="show = !show"
@@ -71,7 +75,7 @@
           {{ $t('actionVerbs.save') }}
         </h-button>
       </div>
-    </h-form>
+    </div>
   </h-drawer>
 </template>
 
@@ -190,17 +194,36 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .create-workspace-drawer {
+  .form__container{
+    display: flex;
+    flex-direction: column;
+    height: 107%;
+
+    .el-workspace__header{
+      min-height: 10%;
+      padding: 38px 38px 0px 0px;
+    }
+
     .create-workspace-form {
-      .buttons {
-        margin-top: 60px;
-        display: flex;
-        justify-content: flex-end;
-      }
+      display: flex;
+      flex-direction: column;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      max-height: 85%;
+      padding: 0px 25px 0px 0px;
+      margin-top: 0px;
+      margin-bottom: 30px;
+      flex-grow: 1;
 
       .url-hint {
         color: $red;
       }
+    }
+
+    .footer{
+      display: flex;
+      justify-content: space-between;
+      flex-shrink: 0;
     }
   }
 </style>
