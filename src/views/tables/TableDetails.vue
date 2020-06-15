@@ -6,7 +6,12 @@
           <h3>{{ tableName }}</h3>
         </div>
         <div class="table-details--settings-btn">
-          <el-button type="primary" @click="showModal = true">{{ $t('tables.tableConfig') }}</el-button>
+          <el-button
+            type="primary"
+            @click="showModal = true"
+          >
+            {{ $t('tables.tableConfig') }}
+          </el-button>
         </div>
 
       </div>
@@ -30,7 +35,11 @@
       width="35%"
       destroy-on-close
     >
-      <table-config :columns="tableColumns" :table-object="tableObject" @closeModal="showModal=false" />
+      <table-config
+        :columns="tableColumns"
+        :table-object="tableObject"
+        @closeModal="showModal=false"
+      />
     </el-dialog>
   </div>
 </template>

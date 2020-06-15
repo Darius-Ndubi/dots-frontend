@@ -59,7 +59,13 @@
 
       <div class="import-csv-form__action-btns">
         <el-button @click="$emit('closeModal')">{{ $t('actionVerbs.cancel') }}</el-button>
-        <el-button type="primary" :loading="saving" @click="saveData">{{ $t('actionVerbs.submit') }}</el-button>
+        <el-button
+          type="primary"
+          :loading="saving"
+          @click="saveData"
+        >
+          {{ $t('actionVerbs.submit') }}
+        </el-button>
       </div>
     </el-form>
   </div>
