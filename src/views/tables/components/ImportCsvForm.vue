@@ -6,13 +6,14 @@
           <el-input v-model="form.name" />
           <span class="import-csv-form__help-text">{{ $t('tables.csvImportForm.nameHelpText') }}</span>
         </el-form-item>
-
         <el-form-item :label="$t('tables.listTable.source')" class="import-csv-form__field-item">
           <el-input v-model="form.source" :readonly="true" />
         </el-form-item>
       </div>
-      <div v-if="!table">
+      <div>
         <template v-if="form.source ==='csv'">
+          <!-- <upload-excel
+          accept=".csv, text/csv" /> -->
           <el-upload
             class="import-csv-form__upload-area"
             action=""
@@ -32,34 +33,11 @@
             </div>
           </el-upload>
         </template>
-        <template v-else>
-          <div class="import-csv-form__fields">
-            <el-form-item
-              :label="$t('tables.csvImportForm.selectForm', {source: form.source.toUpperCase()})"
-              class="import-csv-form__field-item"
-            >
-              <el-select
-                v-model="form.data.url"
-                filterable
-                class="fullWidth"
-                placeholder="Select a form to import its data"
-                @change="thirdPartyFormSelected"
-              >
-                <el-option
-                  v-for="item in thirdPartyForms"
-                  :key="item.id"
-                  :label="item.title"
-                  :value="item.url"
-                />
-              </el-select>
-            </el-form-item>
-          </div>
-        </template>
       </div>
 
       <div class="import-csv-form__action-btns">
         <el-button @click="$emit('closeModal')">{{ $t('actionVerbs.cancel') }}</el-button>
-        <el-button type="primary" :loading="saving" @click="saveData">{{ $t('actionVerbs.submit') }}</el-button>
+        <el-button type="primary" :loading="saving" @click="saveData">{{ $t('actionVerbs.import') }}</el-button>
       </div>
     </el-form>
   </div>
@@ -75,7 +53,7 @@ export default {
   name: 'ImportCsvForm',
   props: {
     table: { type: Object, required: false, default: null },
-    source: { type: String, required: false, default: '' },
+    source: { type: String, required: false, default: 'csv' },
     thirdPartyForms: { type: Array, required: false, default: () => [] }
   },
   data() {
@@ -110,12 +88,14 @@ export default {
     /**
        * Save data
        */
-    saveData() {
+    async saveData() {
       this.saving = true
       if (this.table) {
-        this.editTable()
+        await this.editTable()
+        this.goToTablesPage()
       } else {
-        this.createTable()
+        await this.createTable()
+        this.goToTablesPage()
       }
     },
 
@@ -124,12 +104,14 @@ export default {
        **/
     createTable() {
       this.$store.dispatch(`tables/${tableActions.CREATE_TABLE}`, this.form).then(table => {
-        this.$emit(EVENT_CLOSE)
+        // this.$emit(EVENT_CLOSE)
         this.$notify({
           title: 'Success',
           message: this.$t('notifications.successCreate', { table: table.name }),
           type: 'success'
         })
+      }).catch((e) => {
+        console.log('error', e)
       }).finally(() => {
         this.saving = false
       })
@@ -159,7 +141,6 @@ export default {
     },
 
     setFile(file, fileList) {
-      console.log(file)
       if (!this.form.name) {
         this.form.name = file.name.split('.').slice(0, -1).join('.')
       }
@@ -186,6 +167,10 @@ export default {
         this.form.name = form.title
       }
       console.log('event:::', event)
+    },
+
+    goToTablesPage() {
+      this.$router.push({ name: 'Tables' })
     }
   }
 }

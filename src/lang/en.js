@@ -90,8 +90,14 @@ export default {
     importLabel: 'Import Data',
     tableConfig: 'Configurations',
     tableSettings: 'Settings',
+    details: 'Details',
     setConfigs: 'Set Table Configurations',
     importCsv: 'Import CSV Data',
+    importTable: {
+      importTable: 'Import Table',
+      importCsv: 'Import CSV',
+      importKobo: 'KoboToolBox'
+    },
     listTable: {
       tableUuid: 'Table uuid',
       tableName: 'Name',
@@ -127,7 +133,8 @@ export default {
     submit: 'Submit',
     cancel: 'Cancel',
     save: 'Save',
-    add: 'Add'
+    add: 'Add',
+    import: 'Import'
   },
   notifications: {
     successDelete: '{table} was successfully deleted',

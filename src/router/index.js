@@ -181,6 +181,17 @@ const routes = [
         }
       },
       {
+        path: 'import/',
+        component: () =>
+          import(
+            /* webpackChunkName: "import-page" */ '@/views/tables/components/ImportPage.vue'
+          ),
+        name: 'ImportPage',
+        meta: {
+          title: 'Import Table'
+        }
+      },
+      {
         path: 'details/:tableUuid',
         component: () =>
           import(

@@ -15,7 +15,6 @@ export function getTables() {
  * @param { object } data: new table data
  */
 export function postTable(data) {
-  console.log('I am here with ', data)
   return request({
     url: '/tables/',
     method: 'post',
