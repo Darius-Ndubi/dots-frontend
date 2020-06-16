@@ -90,8 +90,14 @@ export default {
     importLabel: 'Import Data',
     tableConfig: 'Configurations',
     tableSettings: 'Settings',
+    details: 'Details',
     setConfigs: 'Set Table Configurations',
     importCsv: 'Import CSV Data',
+    importTable: {
+      importTable: 'Import Table',
+      importCsv: 'Import Spreadsheet',
+      importKobo: 'KoboToolBox'
+    },
     listTable: {
       tableUuid: 'Table uuid',
       tableName: 'Name',

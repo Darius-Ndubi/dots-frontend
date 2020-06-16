@@ -4,16 +4,12 @@
     <template>
       <div class="table-list__item-list">
         <div class="table-list__import-btn">
-          <el-dropdown @click="showModal = true" @command="sourceSelected">
-            <el-button type="primary">
-              {{ $t('tables.importLabel') }}<i class="el-icon-arrow-down el-icon--right" />
-            </el-button>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item :command="'csv'">CSV</el-dropdown-item>
-              <el-dropdown-item :command="'kobo'">Kobo Toolbox</el-dropdown-item>
-              <el-dropdown-item :command="'ona'">Ona</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+          <h-button
+            dark-text
+            @click="$router.push({name: 'ImportPage'})"
+          >
+            {{ $t('tables.details') }}
+          </h-button>
         </div>
 
         <div class="table-list__table-cont">
