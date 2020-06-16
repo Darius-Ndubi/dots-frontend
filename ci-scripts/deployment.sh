@@ -4,7 +4,8 @@ set +ex
 
 #@--- install kubectl and doctl ---@#
 install_kubectl_doctl() {
-    if [[ $TRAVIS_BRANCH == "develop" ]]; then
+    if [[ $TRAVIS_BRANCH == "develop" ]] || \
+        [[ $TRAVIS_BRANCH == "ISS-171" ]]; then
         echo "++++++++++++ install kubectl ++++++++++++"
         curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 
@@ -31,7 +32,8 @@ install_kubectl_doctl() {
 #@--- Authorize kubectl to cluster ---@#
 auth_kubectl_cluster() {
     # Authenticate kubectl to the cluster
-    if [[ $TRAVIS_BRANCH == "develop" ]]; then
+    if [[ $TRAVIS_BRANCH == "develop" ]] || \
+        [[ $TRAVIS_BRANCH == "ISS-171" ]]; then
         doctl auth init -t $SERVICE_ACCESS_TOKEN
         doctl -t $SERVICE_ACCESS_TOKEN kubernetes cluster kubeconfig save $CLUSTER_NAME
         kubectl create namespace $APPLICATION_ENV || echo "++++++ Namespace Exists ++++++"
@@ -60,15 +62,16 @@ deploy_app() {
         --from-file=.dockerconfigjson=$FILE_PATH \
         --type=kubernetes.io/dockerconfigjson -n $APPLICATION_ENV
 
-    if [[ $TRAVIS_BRANCH == "develop" ]]; then
+    if [[ $TRAVIS_BRANCH == "develop" ]] || \
+        [[ $TRAVIS_BRANCH == "ISS-171" ]]; then
         echo "------- generate deployfiles --------------"
-        envsubst < ./api/deployment > deployment.yaml
+        envsubst < ./api/deployment-limits > deployment.yaml
         envsubst < ./api/service > service.yaml
         envsubst < ./api/autoscaler > autoscaler.yaml
-        envsubst < ./shared_api_web_files/ingress-config > ingress-config.yaml
+        envsubst < ./shared_api_web_files/api-web-ingress-config > ingress-config.yaml
         envsubst < ./cert-config/cert-issuer > cert-issuer.yaml
         envsubst < ./cert-config/cert-secret > cert-secret.yaml
-        envsubst < ./cert-config/certificate > certificate.yaml
+        envsubst < ./cert-config/shared-certificate > certificate.yaml
 
         echo "+++++++  make deployments with kubectl +++++++"
         kubectl create clusterrolebinding serviceaccounts-cluster-admin --clusterrole=cluster-admin --group=system:serviceaccounts
@@ -105,6 +108,14 @@ replace_variables() {
         export APPLICATION_ENV=${APPLICATION_ENV_DEV}
     fi
 
+    #@--- Replace necesary variables for staging  env ---@#
+    if [[ $TRAVIS_BRANCH == "ISS-171" ]]; then
+        export CLUSTER_NAME=${CLUSTER_NAME_STAGING}
+        export HOST_DOMAIN_WEB=${HOST_DOMAIN_WEB_STAGING}
+        export HOST_DOMAIN_API=${HOST_DOMAIN_API_STAGING}
+        export APPLICATION_ENV=${APPLICATION_ENV_STAGING}
+    fi
+
 }
 
 #@--- Send slack notification ---@#
@@ -136,7 +147,7 @@ main() {
         deploy_app
 
         #@--- Run notification fucntion ---@#
-        notify_team_on_slack
+        # notify_team_on_slack
     fi
 
 }
