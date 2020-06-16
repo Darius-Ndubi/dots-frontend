@@ -54,6 +54,7 @@
     "husky": "^4.2.3",
     "iconfont-webpack-plugin": "^4.2.2",
     "lint-staged": "^10.1.2",
+    "mailslurp-client": "^8.7.8",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "svg-sprite-loader": "^4.2.2",

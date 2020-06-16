@@ -13,16 +13,8 @@ describe('Valid and invalid login', () => {
 
     it('Logs in successfully.', () => {
       cy.visit('/')
-      cy.get('.heading').should('contain', 'Log in to Dots')
-      cy.get('[placeholder="Email or username"]')
-        .type(data.admin)
-        .should('have.value', data.admin)
-      cy.get('[placeholder="Password"]')
-        .type(data.adminPassowrd)
-        .should('have.value', data.adminPassowrd)
-      cy.get('button')
-        .contains('Log in')
-        .click()
+
+      cy.login(data.admin, data.adminPassowrd)
       cy.get('.brand').should('exist')
       cy.get('h1').should('contain', 'Dots')
     })

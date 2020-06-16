@@ -15,6 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import './api.commands'
 import './api.django_commands'
 
 // Alternatively you can use CommonJS syntax:

@@ -42,9 +42,12 @@ describe('Registration', () => {
     cy.fixture('data.json').then(test_data => {
       data = test_data
     })
+    cy.apiDeleteALLEmails()
   })
 
   it('Registers a new account successfully.', () => {
+    let verifyLink
+
     cy.apiDALogin(data.admin, data.adminPassowrd)
     cy.apiDADeleteUser(data.newUN)
 
@@ -65,7 +68,44 @@ describe('Registration', () => {
       'Please confirm your email to log in to the application.'
     ).should('exist')
 
-    // [TODO] Verify email address
+    // Check if a user can login before email verifcation
+    cy.login(data.newUN, data.newPassword)
+    cy.get(
+      '.el-alert--error > .el-alert__content > .el-alert__description'
+    ).should('contain', 'Please verify your email before logging in')
+
+    // Verify Email
+    cy.apiGetLinkFromEmail('Verify Your Email', 'Confirm email', 0).then(
+      res => {
+        verifyLink = res
+      }
+    )
+
+    cy.get('a')
+      .contains('Resend Email')
+      .click()
+
+    cy.get(
+      '.el-alert--success > .el-alert__content > .el-alert__description'
+    ).should('contain', 'An email has been sent. Please check your email.')
+
+    cy.apiGetLinkFromEmail('Verify Your Email', 'Confirm email', 1).then(
+      res => {
+        cy.log(res)
+        verifyLink = res
+        cy.visit(`activate/${verifyLink.split('/')[4]}`)
+      }
+    )
+    cy.get('[style=""] > .title').should(
+      'contain',
+      'Your account has been verified!'
+    )
+    cy.get('button')
+      .contains('Log in')
+      .click()
+    cy.login(data.newUN, data.newPassword)
+    cy.get('.brand').should('exist')
+    cy.get('h1').should('contain', 'Dots')
   })
 
   it('Fails to register with existing account.', () => {
