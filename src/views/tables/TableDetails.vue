@@ -6,12 +6,7 @@
           <h3>{{ tableName }}</h3>
         </div>
         <div class="table-details--settings-btn">
-          <el-button
-            type="primary"
-            @click="showModal = true"
-          >
-            {{ $t('tables.tableConfig') }}
-          </el-button>
+          <h-button dark-text icon="el-icon-guide" @click="showSettingsDrawer = !showSettingsDrawer">{{ $t('tables.tableSettings') }}</h-button>
         </div>
 
       </div>
@@ -29,35 +24,28 @@
         />
       </el-table>
     </div>
-    <el-dialog
-      :title="$t('tables.setConfigs')"
-      :visible.sync="showModal"
-      width="35%"
-      destroy-on-close
-    >
-      <table-config
-        :columns="tableColumns"
-        :table-object="tableObject"
-        @closeModal="showModal=false"
-      />
-    </el-dialog>
+    <table-settings
+      :open-drawer="showSettingsDrawer"
+      :table-object="tableObject"
+    />
   </div>
 </template>
 
 <script>
 import { tableActions } from '@/store/modules/tables'
 import { mapGetters } from 'vuex'
-import TableConfig from './components/TableConfig'
+import TableSettings from './components/TableSettings'
 
 export default {
   name: 'TableDetails',
   components: {
-    TableConfig
+    TableSettings
   },
   data: () => {
     return {
       showModal: false,
-      loading: false
+      loading: false,
+      showSettingsDrawer: false
     }
   },
   computed: {
@@ -78,7 +66,9 @@ export default {
     tableObject() {
       return {
         uuid: this.getTableDetails.table_uuid,
-        name: this.getTableDetails.name
+        name: this.getTableDetails.name,
+        owner: this.getTableDetails.owner,
+        source: this.getTableDetails.source
       }
     }
   },
@@ -97,9 +87,7 @@ export default {
     this.$nextTick().then(() => {
       this.table = this.getAllTables
     })
-  },
-
-  methods: {}
+  }
 }
 </script>
 

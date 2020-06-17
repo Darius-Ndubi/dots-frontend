@@ -1,5 +1,23 @@
 <template>
   <div class="login-container">
+    <el-alert
+      v-show="verifyError"
+      type="error"
+      center
+    >
+      <slot name="description">
+        {{ $t('error.not_verified.description') }} <a class="custom-link" @click="resendEmail">  <i> {{ $t('error.not_verified.action') }} </i> </a>
+      </slot>
+    </el-alert>
+    <el-alert
+      v-show="emailResent"
+      type="success"
+      center
+    >
+      <slot name="description">
+        {{ $t('error.reverification.description') }}
+      </slot>
+    </el-alert>
     <el-form
       ref="loginForm"
       v-loading="loading"
@@ -7,6 +25,7 @@
       :model="formData"
       :rules="rules"
     >
+
       <div class="header">
         <span class="heading">{{ $t('login.header') }}</span>
       </div>
@@ -77,7 +96,9 @@ export default {
       passwordType: 'password',
       capsTooltip: false,
       redirect: undefined,
-      otherQuery: {}
+      otherQuery: {},
+      verifyError: false,
+      emailResent: false
     }
   },
   watch: {
@@ -109,6 +130,7 @@ export default {
     },
     login() {
       this.$refs.loginForm.validate(isValid => {
+        this.verifyError = false
         if (isValid) {
           this.loading = true
           this.$store.dispatch('user/login', this.formData)
@@ -117,6 +139,9 @@ export default {
               this.loading = false
             })
             .catch((e) => {
+              if (e.response.status === 400 && e.response.data.not_verified) {
+                this.verifyError = true
+              }
               this.loading = false
             })
         } else {
@@ -131,6 +156,20 @@ export default {
         }
         return acc
       }, {})
+    },
+
+    resendEmail() {
+      this.verifyError = false
+      this.$store.dispatch('user/resendActivationEmail', this.formData.username)
+        .then(() => {
+          this.emailResent = true
+          this.loading = false
+        })
+        .catch((e) => {
+          this.loading = false
+        })
+      this.verifyError = false
+      this.emailResent = true
     }
   }
 }
@@ -262,5 +301,15 @@ export default {
         }
       }
     }
+  }
+
+  .custom-link {
+    color: $black;
+    cursor: pointer;
+  }
+
+  .custom-link:hover {
+    color: $primary-color;
+    text-decoration: underline;
   }
 </style>

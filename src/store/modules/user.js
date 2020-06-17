@@ -1,4 +1,5 @@
-import { login, getInfo, activateUser } from '@/api/user'
+import { login, getInfo, activateUser, resendActivationEmail } from '@/api/user'
+
 import { getToken, setToken, removeToken, getRefreshToken, removeRefreshToken, setRefreshToken } from '@/utils/auth'
 
 function initialState() {
@@ -78,7 +79,7 @@ const actions = {
     })
   },
 
-  activateUser({}, activation_key) {
+  activateUser({}, activation_key) { // eslint-disable-line no-empty-pattern
     return new Promise((resolve, reject) => {
       activateUser(activation_key).then(response => {
         resolve(response)
@@ -95,6 +96,16 @@ const actions = {
       removeToken()
       removeRefreshToken()
       resolve()
+    })
+  },
+
+  resendActivationEmail({}, username) { // eslint-disable-line no-empty-pattern
+    return new Promise((resolve, reject) => {
+      resendActivationEmail({ username }).then(response => {
+        resolve(response)
+      }).catch(error => {
+        reject(error)
+      })
     })
   }
 }

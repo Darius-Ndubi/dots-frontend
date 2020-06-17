@@ -357,6 +357,7 @@ export default {
 
     .layers {
       height: 80%;
+      padding-bottom: 800px; // To show few last Layers if scrollable
       .layer {
         padding-bottom: 20px;
       }
