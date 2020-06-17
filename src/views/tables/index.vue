@@ -28,18 +28,18 @@
           </div>
 
         </div>
+        <div class="add-layer__container">
+          <h-button
+            icon="el-icon-circle-plus-outline"
+            class="add-layer__button"
+            workspace-button
+          >
+            <!-- {{ $t('main.addWorkspace') }} -->
+            Add New Layer
+          </h-button>
+        </div>
       </div>
 
-      <div class="add-layer__container">
-        <h-button
-          icon="el-icon-circle-plus-outline"
-          class="add-layer__button"
-          workspace-button
-        >
-          <!-- {{ $t('main.addWorkspace') }} -->
-          Add New Layer
-        </h-button>
-      </div>
     </div>
     <template>
       <div class="table-list__item-list">
@@ -339,10 +339,8 @@ export default {
     width: 25%;
     position: fixed;
     padding-left: 25px;
-    padding-right: 25px;
     left: 0;
     height: calc(100% - 95px);
-    overflow: scroll;
     border: none;
     box-sizing: border-box;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
@@ -360,8 +358,9 @@ export default {
     }
 
     .layers {
-      height: 80%;
-      padding-bottom: 800px; // To show few last Layers if scrollable
+      height: 70%;
+      overflow: scroll;
+      padding-top: 15px;
       .layer {
         padding-bottom: 20px;
       }
@@ -376,20 +375,16 @@ export default {
       align-items: center;
       width: 100%;
       left: 0;
-
-      width: inherit;
-      padding: inherit;
-      margin: inherit;
-
-      // Background to hide layers list if too long
-      background: white;
-      height: 100px;
-      width: 21%;
+      border-radius: 0px 0 20px 0px;
+      background: white; // Background to hide layers list if too long
+      height: 80px;
+      width: 25%;
+      bottom: 20px;
     }
   }
 
   .add-layer__button {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     margin: auto 0 35px 0;
     color: black;
