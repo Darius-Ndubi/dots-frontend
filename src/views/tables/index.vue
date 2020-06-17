@@ -206,7 +206,7 @@ export default {
     width: 95%;
   }
   &__import-btn {
-    padding: 25px 10px 25px 10px;
+    padding: 0px 10px 25px 10px;
     display: flex;
     flex-direction: row-reverse;
   }

@@ -55,4 +55,7 @@ export default {
     align-items: center;
   }
 }
+.el-main {
+  margin-top: 20px;
+}
 </style>

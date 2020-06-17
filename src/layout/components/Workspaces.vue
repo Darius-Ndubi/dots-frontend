@@ -12,7 +12,7 @@
         <div class="avatar-wrapper">
           <el-avatar shape="square">{{ nameInitials }}</el-avatar>
         </div>
-        <span class="username body-bold">
+        <span class="username body-bold" @click="goToProfileSettings">
           {{ $t('main.profile', { username: username }) }}
         </span>
         <span class="logout body-reg" @click="logout"><svg-icon icon-name="logout" /> {{ $t('navbar.logout') }}</span>
@@ -107,6 +107,10 @@ export default {
     },
     goToWorkspaceSettings() {
       this.$router.push({ name: 'WorkspaceSettings' })
+      this.show = false
+    },
+    goToProfileSettings() {
+      this.$router.push({ name: 'Profile' })
       this.show = false
     }
   }

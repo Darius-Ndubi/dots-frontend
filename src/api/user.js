@@ -15,6 +15,14 @@ export function getInfo() {
   })
 }
 
+export function updateProfile(data) {
+  return request({
+    url: '/user',
+    method: 'patch',
+    data
+  })
+}
+
 export function register(data) {
   return request({
     url: '/user/register',
@@ -43,6 +51,14 @@ export function activateUser(data) {
   return request({
     url: `/activate/${data}`,
     method: 'get',
+    data
+  })
+}
+
+export function updatePassword(data) {
+  return request({
+    url: '/user/update_password',
+    method: 'post',
     data
   })
 }

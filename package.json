@@ -14,7 +14,7 @@
     "serve:deploy": "serve -s dist"
   },
   "dependencies": {
-    "@hikaya/hakawati": "0.1.8",
+    "@hikaya/hakawati": "0.1.12",
     "@mapbox/mapbox-gl-draw": "^1.1.2",
     "@types/moment": "^2.13.0",
     "axios": "^0.19.2",

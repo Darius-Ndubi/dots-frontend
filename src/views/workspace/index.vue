@@ -36,6 +36,7 @@ export default {
   left:0;
 }
 .el-tabs__content{
-  margin-left:250px
+  margin-left:250px;
 }
+
 </style>

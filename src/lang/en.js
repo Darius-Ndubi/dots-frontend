@@ -173,5 +173,46 @@ export default {
       leave: 'Leave workspace',
       transfer: 'Transfer Ownership'
     }
+  },
+  profile: {
+    index: {
+      title: 'Profile',
+      form: {
+        firstName: 'First Name',
+        lastName: 'Last Name',
+        title: 'Title',
+        username: 'Username',
+        email: 'Email',
+        validationErrors: {
+          firstName: 'Please enter your first name',
+          lastName: 'Please  enter your last name',
+          title: 'Your title',
+          username: 'Please enter your prefered username',
+          email: 'Please enter your email'
+        }
+      }
+    },
+    security: {
+      title: 'Security',
+      form: {
+        labels: {
+          currentPassword: 'Current Password',
+          newPassword: 'New Password',
+          confirmNewPassword: 'Confirm Password'
+        },
+        validationErrors: {
+          currentPassword: 'Please enter your current password',
+          newPassword: 'Please enter your new password',
+          confirmNewPassword: 'Please confirm your new password',
+          passwordMismatch: 'Entered passwords don\'t match!'
+        }
+      }
+    },
+    language: {
+      title: 'Language',
+      form: {
+        selectLanguage: 'Select language'
+      }
+    }
   }
 }

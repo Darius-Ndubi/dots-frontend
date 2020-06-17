@@ -1,4 +1,4 @@
-import { login, getInfo } from '@/api/user'
+import { login, getInfo, activateUser, resendActivationEmail, updateProfile, updatePassword } from '@/api/user'
 
 import { getToken, setToken, removeToken, getRefreshToken, removeRefreshToken, setRefreshToken } from '@/utils/auth'
 
@@ -87,12 +87,48 @@ const actions = {
       removeRefreshToken()
       resolve()
     })
+  },
+
+  updateProfile({ commit }, profile) {
+    return new Promise((resolve, reject) => {
+      updateProfile(profile)
+        .then(response => {
+          commit('SET_USER', response)
+          resolve(response)
+        })
+        .catch(error => reject(error))
+    })
+  },
+
+  updatePassword({}, data) {
+    return new Promise((resolve, reject) => {
+      updatePassword(data)
+        .then(response => {
+          resolve(response)
+        })
+        .catch(error => reject(error))
+      })
+    },
+
+  resendActivationEmail({}, username) {
+    return new Promise((resolve, reject) => {
+      resendActivationEmail({ username }).then(response => {
+        resolve(response)
+      }).catch(error => {
+        reject(error)
+      })
+    })
   }
+}
+
+const getters = {
+  getUserDetails: state => state.user
 }
 
 export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
+  getters
 }
