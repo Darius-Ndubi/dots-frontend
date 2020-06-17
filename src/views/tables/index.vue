@@ -339,12 +339,16 @@ export default {
     width: 25%;
     position: fixed;
     padding-left: 25px;
-    padding-right: 13px;
+    padding-right: 25px;
     left: 0;
-    border-color: black;
-    border-style: dotted;
     height: calc(100% - 95px);
     overflow: scroll;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 20px 20px 0px;
+    border-color: transparent;
+    margin-right: 0px;
 
     .title {
       padding-top: 50px;
@@ -379,7 +383,7 @@ export default {
       // Background to hide layers list if too long
       background: white;
       height: 100px;
-      border-top: black dotted;
+      width: 21%;
     }
   }
 
