@@ -15,7 +15,7 @@
         >
           <div>{{ layer.title }}</div>
           <div style="display: flex">
-            <h-switch />
+            <h-switch width="35" />
             <h-dropdown>
               <div slot="title">
                 <i class="el-icon-more el-icon--right" />
@@ -30,7 +30,7 @@
         </div>
         <div class="add-layer__container">
           <h-button
-            icon="el-icon-circle-plus-outline"
+            icon="el-icon-plus"
             class="add-layer__button"
             workspace-button
           >
@@ -338,7 +338,7 @@ export default {
   .sidebar {
     width: 25%;
     position: fixed;
-    padding-left: 25px;
+    padding: 0px 25px;
     left: 0;
     height: calc(100% - 95px);
     border: none;
@@ -410,5 +410,9 @@ export default {
     display: flex;
     justify-content: space-between  ;
   }
+}
+
+.el-icon-more {
+  transform: rotate(90deg);
 }
 </style>
