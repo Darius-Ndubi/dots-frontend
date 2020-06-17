@@ -2,7 +2,7 @@
   <el-row type="flex" justify="center">
     <el-col :span="24">
       <h2 class="title">{{ $t('thankYou.title') }}</h2>
-      <p class="body-2-reg">{{ $t('thankYou.description') }}</p>
+      <p class="body-3-reg">{{ $t('thankYou.description') }}</p>
       <h-button type="primary" @click="goToLogin">{{ $t('thankYou.logIn') }} {{ 6 - count }}</h-button>
     </el-col>
   </el-row>

@@ -22,7 +22,7 @@
           <div slot="items">
             <span class="heading">{{ getDefaultWorkspace.name }}</span>
             <br>
-            <span class="body-2-reg">{{ getDefaultWorkspace.role }}</span>
+            <span class="body-3-reg">{{ getDefaultWorkspace.role }}</span>
           </div>
         </h-card>
         <el-row class="other-workspaces" :gutter="40">

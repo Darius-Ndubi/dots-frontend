@@ -2,7 +2,7 @@
   <el-row type="flex" justify="center">
     <el-col :span="24">
       <h2 class="title">{{ $t('error.403.title') }}</h2>
-      <p class="body-2-reg">{{ $t('error.403.description') }}</p>
+      <p class="body-3-reg">{{ $t('error.403.description') }}</p>
       <router-link :to="{ name: 'Dashboard'}">
         <h-button type="primary">{{ $t('error.403.action') }} </h-button>
       </router-link>

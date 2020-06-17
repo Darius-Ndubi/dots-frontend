@@ -3,12 +3,12 @@
     <el-col v-loading="loading" :span="24">
       <el-col v-show="!loading && success">
         <h2 class="title">{{ $t('userActivation.success.title') }}</h2>
-        <p class="body-2-reg">{{ $t('userActivation.success.description') }}</p>
+        <p class="body-3-reg">{{ $t('userActivation.success.description') }}</p>
         <h-button type="primary" @click="goToLogin">{{ $t('userActivation.success.action') }} </h-button>
       </el-col>
-       <el-col v-show="!loading && !success">
+      <el-col v-show="!loading && !success">
         <h2 class="title">{{ $t('userActivation.failed.title') }}</h2>
-        <p class="body-2-reg">{{ $t('userActivation.failed.description') }}</p>
+        <p class="body-3-reg">{{ $t('userActivation.failed.description') }}</p>
       </el-col>
     </el-col>
   </el-row>
