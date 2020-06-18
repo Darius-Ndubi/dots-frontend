@@ -35,16 +35,16 @@ export default {
           label: this.$t('navbar.dashboard')
         },
         {
+          name: 'Data',
+          label: this.$t('navbar.data')
+        },
+        {
           name: 'Maps',
           label: this.$t('navbar.maps')
         },
         {
           name: 'Reports',
           label: this.$t('navbar.reports')
-        },
-        {
-          name: 'Tables',
-          label: this.$t('navbar.tables')
         }
       ],
       showDrawer: false

@@ -8,7 +8,7 @@ export default {
     dashboard: 'Dashboard',
     maps: 'Maps',
     reports: 'Reports',
-    tables: 'Tables'
+    data: 'Data'
   },
   main: {
     profile: '{username} profile',

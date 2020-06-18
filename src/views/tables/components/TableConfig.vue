@@ -32,7 +32,12 @@
 
       <div class="table-config__fields">
         <el-form-item :label="$t('tables.tableConfigForm.latitude')" class="table-config--field-cont">
-          <el-select v-model="form.latitude_field" filterable placeholder="Select latitude column" class="fullWidth">
+          <el-select
+            v-model="form.latitude_field"
+            filterable
+            placeholder="Select latitude column"
+            class="fullWidth"
+          >
             <el-option
               v-for="item in columnOptions"
               :key="item.value"
@@ -43,7 +48,12 @@
         </el-form-item>
 
         <el-form-item :label="$t('tables.tableConfigForm.longitude')" class="table-config--field-cont">
-          <el-select v-model="form.longitude_field" filterable placeholder="Select longitude column" class="fullWidth">
+          <el-select
+            v-model="form.longitude_field"
+            filterable
+            placeholder="Select longitude column"
+            class="fullWidth"
+          >
             <el-option
               v-for="item in columnOptions"
               :key="item.value"
@@ -55,7 +65,12 @@
       </div>
       <div class="table-config__fields">
         <el-form-item :label="$t('tables.tableConfigForm.mapToolTipField')" class="fullWidth">
-          <el-select v-model="form.tool_tip_field" filterable placeholder="Select longitude column" class="fullWidth">
+          <el-select
+            v-model="form.tool_tip_field"
+            filterable
+            placeholder="Select longitude column"
+            class="fullWidth"
+          >
             <el-option
               v-for="item in columnOptions"
               :key="item.value"
@@ -117,6 +132,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss">
   .fullWidth {
     width: 100%;

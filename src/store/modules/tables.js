@@ -107,6 +107,7 @@ const actions = {
     commit(mutationTypes.SET_TABLE_DETAILS, [])
     try {
       const response = await getTableDetails(payload)
+      // Set the owner attribute to an object with name
       commit(mutationTypes.SET_TABLE_DETAILS, response)
 
       return response

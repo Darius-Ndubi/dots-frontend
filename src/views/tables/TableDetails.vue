@@ -32,7 +32,10 @@
         />
       </el-table>
     </div>
-    <table-settings :open-drawer="showSettingsDrawer" :table-object="tableObject" />
+    <table-settings
+      :open-drawer="showSettingsDrawer"
+      :table-object="tableObject"
+    />
   </div>
 </template>
 
