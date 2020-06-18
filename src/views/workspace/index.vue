@@ -11,7 +11,7 @@
         <workspace-settings />
       </el-tab-pane>
       <el-tab-pane :label="$t('workspace.people')" name="second"><workspace-users /></el-tab-pane>
-      <el-tab-pane :label="$t('workspace.configutations')" name="third"><workspace-config /></el-tab-pane>
+      <el-tab-pane :label="$t('workspace.configurations')" name="third"><workspace-config /></el-tab-pane>
     </h-tab>
   </div>
 </template>

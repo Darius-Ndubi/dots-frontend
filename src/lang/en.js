@@ -87,12 +87,16 @@ export default {
     }
   },
   tables: {
+    tableList: 'Table List',
+    tableButton: 'Table',
+    layerButton: 'Layers',
     importLabel: 'Import Data',
     tableConfig: 'Configurations',
     tableSettings: 'Settings',
     setConfigs: 'Set Table Configurations',
     importCsv: 'Import CSV Data',
     listTable: {
+      noData: 'No data in the table',
       tableUuid: 'Table uuid',
       tableName: 'Name',
       source: 'Source',
@@ -140,7 +144,7 @@ export default {
     workspaceDetails: 'Workspace Details',
     details: 'Details',
     people: 'People',
-    configutations: 'Configurations',
+    configurations: 'Configurations',
     workspaceUsers: 'Workspace Users',
     welcome: 'Welcome',
     startByCreating: 'Start by creating a workspace',
@@ -187,7 +191,7 @@ export default {
           firstName: 'Please enter your first name',
           lastName: 'Please  enter your last name',
           title: 'Your title',
-          username: 'Please enter your prefered username',
+          username: 'Please enter your preferred username',
           email: 'Please enter your email'
         }
       }

@@ -13,6 +13,7 @@
         </div>
       </div>
       <el-table
+        v-if="tableData.length"
         :data="tableData"
         class="table-details__content"
         height="73vh"
@@ -31,6 +32,7 @@
           width="200px"
         />
       </el-table>
+      <div v-else class="no-table-data body-3-bold">{{ $t('tables.listTable.noData') }}</div>
     </div>
     <table-settings :open-drawer="showSettingsDrawer" :table-object="tableObject" />
   </div>
@@ -125,6 +127,10 @@ export default {
     display: flex;
     flex-direction: row-reverse;
     align-items: end;
+  }
+  .no-table-data{
+  text-align: center;
+  padding-top: 2rem;
   }
 }
 </style>

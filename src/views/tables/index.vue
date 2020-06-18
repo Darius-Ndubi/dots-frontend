@@ -1,13 +1,14 @@
 <template>
-  <div class="table-list">
-
+  <div class="table-page-list">
     <template>
-      <div class="table-list__item-list">
-        <div class="table-list__import-btn">
+      <div class="table-page-list__item-list">
+        <div class="table-page-list__import">
+          <h3 class="heading">{{ $t('tables.tableList') }}</h3>
           <el-dropdown @click="showModal = true" @command="sourceSelected">
-            <el-button type="primary">
-              {{ $t('tables.importLabel') }}<i class="el-icon-arrow-down el-icon--right" />
-            </el-button>
+            <h-button type="primary">
+              + {{ $t('tables.importLabel')
+              }}<i class="el-icon-arrow-down el-icon--right" />
+            </h-button>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item :command="'csv'">CSV</el-dropdown-item>
               <el-dropdown-item :command="'kobo'">Kobo Toolbox</el-dropdown-item>
@@ -16,68 +17,46 @@
           </el-dropdown>
         </div>
 
-        <div class="table-list__table-cont">
-          <el-table
+        <div class="table-page-list__table-container">
+          <div
+            v-for="table in tables"
+            :key="table.id"
             v-loading.fullscreen.lock="loading"
-            :data="tables"
-            highlight-current-row
-            style="width: 100%"
+            class="table-page-list__card-button"
           >
-            <el-table-column property="name" :label="$t('tables.listTable.tableName')">
-              <template slot-scope="scope">
-                <router-link
-                  :to="{
-                    name: 'TableDetails',
-                    params: { tableUuid:scope.row.table_uuid }
-                  }"
-                >{{ scope.row.name }}
-                </router-link>
-              </template>
-            </el-table-column>
-            <el-table-column property="source" :label="$t('tables.listTable.source')" />
-            <el-table-column property="create_date" :label="$t('tables.listTable.createDate')">
-              <template slot-scope="scope">
-                {{ $moment(scope.row.create_date).format('YYYY-MM-DD') }}
-              </template>
-            </el-table-column>
-            <el-table-column property="update_date" :label="$t('tables.listTable.updateDate')">
-              <template slot-scope="scope">
-                {{ $moment(scope.row.update_date).format('YYYY-MM-DD') }}
-              </template>
-            </el-table-column>
-            <el-table-column
-              fixed="right"
-              label="Operations"
-              width="160"
+            <h-card
+              class="table-page-list__card"
+              plain
+              @click="editTable(table)"
             >
-              <template slot-scope="scope">
-                <h-button
-                  type="text"
-                  size="small"
-                  dark-text
-                  @click="$router.push({name: 'TableDetails', params: { tableUuid:scope.row.table_uuid }})"
-                >
-                  Detail
-                </h-button>
-                <h-button
-                  type="text"
-                  size="small"
-                  dark-text
-                  @click="editTable(scope.row)"
-                >
-                  Edit
-                </h-button>
-                <h-button
-                  type="text"
-                  size="small"
-                  dark-text
-                  @click="deleteTable(scope.row)"
-                >
-                  Delete
-                </h-button>
-              </template>
-            </el-table-column>
-          </el-table>
+              <div slot="title">
+                <h3 class="body-3-bold truncate-table-name">{{ table.name }}</h3>
+              </div>
+              <div slot="items" class="info">
+                <h4>{{ table.owner }}</h4>
+                <h4>{{ $moment(table.update_date).format('YYYY-MM-DD') }}</h4>
+                <h4>{{ table.source }}</h4>
+              </div>
+            </h-card>
+            <div class="table-page-list__button">
+              <h-button
+                icon="el-icon-data-board"
+                size="medium"
+                dark-text
+                @click="
+                  $router.push({
+                    name: 'TableDetails',
+                    params: { tableUuid: table.table_uuid }
+                  })
+                "
+              >
+                {{ $t('tables.tableButton') }}
+              </h-button>
+              <h-button icon="el-icon-connection" size="medium" dark-text>
+                {{ $t('tables.layerButton') }}
+              </h-button>
+            </div>
+          </div>
         </div>
       </div>
     </template>
@@ -133,63 +112,66 @@ export default {
     loadTables() {
       this.loading = true
       setTimeout(() => {
-        this.$store.dispatch(
-          `tables/${tableActions.GET_TABLES}`
-        ).finally(() => {
-          this.loading = false
-        })
+        this.$store
+          .dispatch(`tables/${tableActions.GET_TABLES}`)
+          .finally(() => {
+            this.loading = false
+          })
       }, 1000)
     },
 
     /**
-       * delete table
-       * @param table
-       */
+     * delete table
+     * @param table
+     */
     deleteTable(table) {
       this.loading = true
-      this.$store.dispatch(
-        `tables/${tableActions.DELETE_TABLE}`,
-        table.table_uuid
-      ).finally(() => {
-        this.$notify({
-          title: 'Success',
-          message: this.$t('notifications.successDelete', { table: table.name }),
-          type: 'error'
+      this.$store
+        .dispatch(`tables/${tableActions.DELETE_TABLE}`, table.table_uuid)
+        .finally(() => {
+          this.$notify({
+            title: 'Success',
+            message: this.$t('notifications.successDelete', {
+              table: table.name
+            }),
+            type: 'error'
+          })
+          this.loading = false
         })
-        this.loading = false
-      })
     },
 
     /**
-       * set table to edit and show modal
-       * @param {Object} row: selected row object
-       */
+     * set table to edit and show modal
+     * @param {Object} row: selected row object
+     */
     editTable(row) {
       this.currentTable = row
       this.showModal = true
     },
 
     /**
-       * Called on modal close event
-       */
+     * Called on modal close event
+     */
     modalClosed() {
       this.showModal = false
       this.currentTable = null
     },
 
     /**
-       * trigger when a table source is selected
-       * @param event
-       */
+     * trigger when a table source is selected
+     * @param event
+     */
     sourceSelected(event) {
       this.tableSource = event.toLowerCase()
       if (this.tableSource !== 'csv') {
-        this.$store.dispatch(
-          `tables/${tableActions.GET_THIRD_PARTY_FORMS}`,
-          this.tableSource
-        ).then((forms) => {
-          this.thirdPartyForms = forms
-        })
+        this.$store
+          .dispatch(
+            `tables/${tableActions.GET_THIRD_PARTY_FORMS}`,
+            this.tableSource
+          )
+          .then(forms => {
+            this.thirdPartyForms = forms
+          })
       }
       this.showModal = true
     }
@@ -197,24 +179,54 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.table-list {
+<style lang="scss">
+.table-page-list {
   padding: 10px 0px;
   display: flex;
   justify-content: center;
   &__item-list {
     width: 95%;
   }
-  &__import-btn {
-    padding: 0px 10px 25px 10px;
+  &__import {
+    padding: 0px 10px;
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
   }
-}
+  &__table-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  &__card-button{
+    margin: 1rem;
+  }
+  &__card{
+    width: 400px;
+    height: 200px;
+  }
+  &__button{
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .truncate-table-name{
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-.el-button--text {
-  padding: 1.5px 4px;
-  border-radius: 30px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  }
+  .info{
+    font-size: 14px;
+  }
+  .el-card__header{
+    padding: 40px 25px 5px 0px;
+  }
+  .el-card.is-always-shadow{
+      border-radius: 20px;
+}
 }
 </style>
