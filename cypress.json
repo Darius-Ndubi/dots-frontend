@@ -1,7 +1,10 @@
 {
   "pluginsFile": "tests/e2e/plugins/index.js",
+  "projectId": "v5uu35",
   "baseUrl": "https://dots-fe-dev.hikaya.dev",
   "defaultCommandTimeout": 30000,
+  "viewportWidth": 1140,
+  "viewportHeight": 900,
   "env": {
     "beUrl": "https://dots-be-dev.hikaya.dev/admin/",
     "apiKeyMailslurp": "759301a7fb9e03530a7fa6463bfaa6b2ed08e00d6a5c985bc46f75b014850f23",
