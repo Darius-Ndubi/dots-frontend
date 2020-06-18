@@ -5,18 +5,53 @@
 describe('Valid and invalid login', () => {
   context('Valid login', () => {
     let data
+    const login = (username, password) => {
+      cy.login(username, password)
+      cy.get('.brand').should('exist')
+      cy.get('h1').should('contain', 'Dots')
+    }
+    const mixCase = str => {
+      mixed = str.toLowerCase().split('')
+      for (var i = 0; i < mixed.length; i++) {
+        if (parseInt(Math.random() * 10) % 2 === 1) {
+          mixed[i] = mixed[i].toUpperCase()
+        }
+      }
+      return mixed.join('')
+    }
+
     before(() => {
       cy.fixture('data.json').then(test_data => {
         data = test_data
       })
     })
 
-    it('Logs in successfully.', () => {
+    beforeEach(() => {
       cy.visit('/')
+    })
 
-      cy.login(data.admin, data.adminPassowrd)
-      cy.get('.brand').should('exist')
-      cy.get('h1').should('contain', 'Dots')
+    it('Logs in successfully using username.', () => {
+      login(data.admin, data.adminPassword)
+    })
+
+    it('Logs in successfully using email.', () => {
+      login(data.adminEmail, data.adminPassword)
+    })
+
+    it('Logs in successfully using upper case username.', () => {
+      login(data.admin.toUpperCase(), data.adminPassword)
+    })
+
+    it('Logs in successfully using upper case email.', () => {
+      login(data.adminEmail.toUpperCase(), data.adminPassword)
+    })
+
+    it('Logs in successfully using mixed case username.', () => {
+      login(mixCase(data.admin), data.adminPassword)
+    })
+
+    it('Logs in successfully using mixed case email.', () => {
+      login(mixCase(data.adminEmail), data.adminPassword)
     })
   })
 
