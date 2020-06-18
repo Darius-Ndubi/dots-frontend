@@ -12,3 +12,4 @@ Mention persons you'd like to review this PR
 
 ## Issue(s) affected?
 List of issues addressed by this PR. 
+[Note: Add "Resolve", "Fix" or "Close" before the issue number e.g. Fix #XXX]
