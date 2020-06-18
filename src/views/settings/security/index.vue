@@ -69,6 +69,8 @@
   </div>
 </template>
 <script>
+import { updatePassword } from '@/api/user'
+
 export default {
   name: 'SecuritySettings',
   data() {
@@ -108,28 +110,29 @@ export default {
   computed: { },
   methods: {
     updateProfile(form) {
-      this.$refs[form].$children[0].validate((valid) => {
+      this.$refs[form].$children[0].validate(async(valid) => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('user/updatePassword', this.passwordResetForm)
-            .then(() => {
-              this.$refs[form].$children[0].resetFields()
-              this.$notify({
-                title: 'Success',
-                message: 'Your password has been updated successfully',
-                type: 'success'
-              })
+          try {
+            await updatePassword(this.passwordResetForm)
+            this.$refs[form].$children[0].resetFields()
+            this.$notify({
+              title: 'Success',
+              message: 'Your password has been updated successfully',
+              type: 'success'
             })
-            .catch((e) => {
-              this.$notify({
-                title: 'Error',
-                message: e.response.data.current_password[0],
-                type: 'error'
-              })
+          } catch (e) {
+            console.error(e)
+            this.$notify({
+              title: 'Error',
+              message: e.response.data.current_password[0],
+              type: 'error'
             })
-            .finally(() => {
-              this.loading = false
-            })
+          } finally {
+            this.loading = false
+          }
+        } else {
+          return false
         }
       })
     }

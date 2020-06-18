@@ -1,4 +1,4 @@
-import { login, getInfo, activateUser, resendActivationEmail, updateProfile, updatePassword } from '@/api/user'
+import { login, getInfo, updateProfile } from '@/api/user'
 
 import { getToken, setToken, removeToken, getRefreshToken, removeRefreshToken, setRefreshToken } from '@/utils/auth'
 
@@ -97,26 +97,6 @@ const actions = {
           resolve(response)
         })
         .catch(error => reject(error))
-    })
-  },
-
-  updatePassword({}, data) {
-    return new Promise((resolve, reject) => {
-      updatePassword(data)
-        .then(response => {
-          resolve(response)
-        })
-        .catch(error => reject(error))
-      })
-    },
-
-  resendActivationEmail({}, username) {
-    return new Promise((resolve, reject) => {
-      resendActivationEmail({ username }).then(response => {
-        resolve(response)
-      }).catch(error => {
-        reject(error)
-      })
     })
   }
 }

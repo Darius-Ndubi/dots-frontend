@@ -908,10 +908,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@hikaya/hakawati@0.1.11":
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@hikaya/hakawati/-/hakawati-0.1.11.tgz#75b6f1d9adfc0177bcee7301aa7fa5e903520120"
-  integrity sha512-UJivtlCgl7zBliSIz4bDIs9Sir+SoD0aLhMptaHWGVSWsTta5ob4GtGkEcFDV5IJaeymntnAQqyq1Kw+le6C2A==
+"@hikaya/hakawati@0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@hikaya/hakawati/-/hakawati-0.1.12.tgz#a1dc72095fb874a053ca68266e1e3ff1a23b5897"
+  integrity sha512-jvqBSGjYyESfky4mzr1Eg1tbcLk7vzpIG0RZ1QjLJ5qAN2f3CiVEmVvqfQEKUsIjT9uryA5vcD4Z/x/3l9UbSw==
   dependencies:
     core-js "^3.6.4"
     vue "^2.6.11"
