@@ -18,7 +18,7 @@ GIVEN I am a logged in user
 
 AND I navigate to the main page...
 
-AND I click on the button.
+WHEN I click on the button.
 
 THEN I expect this to happen..
 ```
