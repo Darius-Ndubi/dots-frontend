@@ -3,24 +3,32 @@
     <div class="table-details__table">
       <div class="table-details__details-header">
         <div class="table-details--header">
-          <h3>{{ tableName }}</h3>
+          <a href="/tables" class="table-details--header--icon">
+            <i class="el-icon-arrow-left" />
+          </a>
+          <h3 class="heading">{{ tableName }}</h3>
         </div>
         <div class="table-details--settings-btn">
           <h-button dark-text icon="el-icon-guide" @click="showSettingsDrawer = !showSettingsDrawer">{{ $t('tables.tableSettings') }}</h-button>
         </div>
-
       </div>
       <el-table
-        v-loading.fullscreen.lock="loading"
         :data="tableData"
-        style="width: 100%"
+        class="table-details__content"
+        height="73vh"
       >
+        <el-table-column
+          type="selection"
+          width="55"
+          fixed
+        />
         <el-table-column
           v-for="col in tableColumns"
           :key="col"
-          fixed
           :prop="col"
           :label="col"
+          sortable
+          width="200px"
         />
       </el-table>
     </div>
@@ -89,26 +97,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .table-details {
+.table-details {
+  display: flex;
+  justify-content: center;
+  &__table {
+    width: 90%;
+  }
+  &__content {
+    position: absolute;
+  }
+
+  &__details-header {
     display: flex;
-    justify-content: center;
-    &__table {
-      width: 80%;
-    }
-
-    &__details-header {
-      display: flex;
-      justify-content: space-between;
-
-    }
-    &--header{
-      width: 50%;
-    }
-    &--settings-btn {
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: end;
-      width: 50%;
+    align-items: center;
+  }
+  &--header {
+    flex-grow: 2;
+    display: flex;
+    align-items: center;
+    &--icon {
+      -webkit-text-stroke: 2px $light-body-grey;
+      font-size: 2rem;
+      margin-right: 1rem;
     }
   }
+  &--settings-btn {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: end;
+  }
+}
 </style>
