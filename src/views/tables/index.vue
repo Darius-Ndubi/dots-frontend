@@ -34,8 +34,8 @@
               </div>
               <div slot="items" class="info">
                 <h4>{{ table.owner }}</h4>
-                <h4>{{ $moment(table.update_date).format('YYYY-MM-DD') }}</h4>
-                <h4>{{ table.source }}</h4>
+                <h4>{{ $t('tables.lastEdited') }} {{ $moment(table.update_date).format('YYYY-MM-DD') }}</h4>
+                <h4>{{ $t('tables.source') }} {{ table.source }}</h4>
               </div>
             </h-card>
             <div class="table-page-list__button">
@@ -203,8 +203,8 @@ export default {
     margin: 1rem;
   }
   &__card{
-    width: 400px;
-    height: 200px;
+    width: 350px;
+    height: 160px;
   }
   &__button{
     margin-top: 3rem;
@@ -213,7 +213,7 @@ export default {
     align-items: center;
   }
   .truncate-table-name{
-    width: 300px;
+    width: 250px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -223,7 +223,8 @@ export default {
     font-size: 14px;
   }
   .el-card__header{
-    padding: 40px 25px 5px 0px;
+    // padding: 40px 25px 5px 0px;
+    padding: 22px 25px 0px 0px;
   }
   .el-card.is-always-shadow{
       border-radius: 20px;

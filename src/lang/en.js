@@ -88,6 +88,8 @@ export default {
   },
   tables: {
     tableList: 'Table List',
+    source: 'Source:',
+    lastEdited: 'Last edited',
     tableButton: 'Table',
     layerButton: 'Layers',
     importLabel: 'Import Data',
