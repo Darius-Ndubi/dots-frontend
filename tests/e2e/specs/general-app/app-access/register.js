@@ -48,7 +48,7 @@ describe('Registration', () => {
   it('Registers a new account successfully.', () => {
     let verifyLink
 
-    cy.apiDALogin(data.admin, data.adminPassowrd)
+    cy.apiDALogin(data.admin, data.adminPassword)
     cy.apiDADeleteUser(data.newUN)
 
     cy.visit('/')

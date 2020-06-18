@@ -5,8 +5,8 @@
 describe('Valid and invalid login', () => {
   context('Valid login', () => {
     let data
-    const login = (username, paswword) => {
-      cy.login(username, paswword)
+    const login = (username, password) => {
+      cy.login(username, password)
       cy.get('.brand').should('exist')
       cy.get('h1').should('contain', 'Dots')
     }
@@ -31,27 +31,27 @@ describe('Valid and invalid login', () => {
     })
 
     it('Logs in successfully using username.', () => {
-      login(data.admin, data.adminPassowrd)
+      login(data.admin, data.adminPassword)
     })
 
     it('Logs in successfully using email.', () => {
-      login(data.adminEmail, data.adminPassowrd)
+      login(data.adminEmail, data.adminPassword)
     })
 
     it('Logs in successfully using upper case username.', () => {
-      login(data.admin.toUpperCase(), data.adminPassowrd)
+      login(data.admin.toUpperCase(), data.adminPassword)
     })
 
     it('Logs in successfully using upper case email.', () => {
-      login(data.adminEmail.toUpperCase(), data.adminPassowrd)
+      login(data.adminEmail.toUpperCase(), data.adminPassword)
     })
 
     it('Logs in successfully using mixed case username.', () => {
-      login(mixCase(data.admin), data.adminPassowrd)
+      login(mixCase(data.admin), data.adminPassword)
     })
 
     it('Logs in successfully using mixed case email.', () => {
-      login(mixCase(data.adminEmail), data.adminPassowrd)
+      login(mixCase(data.adminEmail), data.adminPassword)
     })
   })
 
