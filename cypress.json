@@ -7,7 +7,7 @@
   "viewportHeight": 900,
   "env": {
     "beUrl": "https://dots-be-dev.hikaya.dev/admin/",
-    "apiKeyMailslurp": "759301a7fb9e03530a7fa6463bfaa6b2ed08e00d6a5c985bc46f75b014850f23",
-    "mailslurpInbox": "3a12e8d4-0955-40a9-b3e5-a4eaba8aa5d7"
+    "apiKeyMailslurp": "768bdb90c0200b94fa2b78e5def0081bea312dafaa1925b57ee9819c04ff2d0b",
+    "mailslurpInbox": "dd53ce6c-d95a-45fb-a73f-6489f76f4ab1"
   }
 }
