@@ -73,3 +73,54 @@ Cypress.Commands.add('apiDADeleteUser', username => {
     }
   })
 })
+
+/**
+ * Create a new user using django admin
+ * @param   {String}    username   The string username for the new user
+ * @param   {String}    password   The string password for the new user
+ */
+// [TODO: add First name and Last and also current time stamp for the creation date]
+Cypress.Commands.add('apiDACreateUser', (username, password, email = '') => {
+  cy.request(`${Cypress.env().beUrl}core/user/`).then(res => {
+    let userNotExists = true
+
+    const links = Cypress.$(res.body).find('a')
+
+    links.each(index => {
+      if (Cypress.$(links[index]).text() === username) {
+        userNotExists = false
+      }
+    })
+
+    if (userNotExists) {
+      cy.request({
+        method: 'POST',
+        url: `${Cypress.env().beUrl}core/user/add/`,
+        failOnStatusCode: false,
+        form: true,
+        body: {
+          csrfmiddlewaretoken: window.csrfToken,
+          password: password,
+          username: username,
+          email: email,
+          is_active: 'on',
+          date_joined_0: '2020-06-19',
+          date_joined_1: '00:21:44',
+          'initial-date_joined_0': '2020-06-19',
+          'initial-date_joined_1': '00:21:44',
+          _save: 'Save'
+        },
+        headers: {
+          Referer: `${Cypress.env().beUrl}core/user/`
+        }
+      }).then(res => {
+        expect(res.status).to.eq(200)
+        const $html = Cypress.$(res.body)
+        const success = $html.find("li[class='success']").text()
+        expect(success).to.eq(`The user "${username}" was added successfully.`)
+      })
+    } else {
+      cy.log(`User Not Created: Username "${username}" already exists.`)
+    }
+  })
+})

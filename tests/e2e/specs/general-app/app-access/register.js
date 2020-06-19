@@ -9,7 +9,7 @@ describe('Registration', () => {
     cy.get('[for="first_name"]')
       .siblings()
       .find('input')
-      .type(data.newFN)
+      .type(newFN)
       .should('have.value', newFN)
     cy.get('[for="last_name"]')
       .siblings()
@@ -74,7 +74,7 @@ describe('Registration', () => {
       '.el-alert--error > .el-alert__content > .el-alert__description'
     ).should('contain', 'Please verify your email before logging in')
 
-    // Verify Email
+    // Verify Verification Email
     cy.apiGetLinkFromEmail('Verify Your Email', 'Confirm email', 0).then(
       res => {
         verifyLink = res
@@ -91,7 +91,6 @@ describe('Registration', () => {
 
     cy.apiGetLinkFromEmail('Verify Your Email', 'Confirm email', 1).then(
       res => {
-        cy.log(res)
         verifyLink = res
         cy.visit(`activate/${verifyLink.split('/')[4]}`)
       }
@@ -100,9 +99,16 @@ describe('Registration', () => {
       'contain',
       'Your account has been verified!'
     )
+
+    // Verify Welcome Email
+    cy.apiGetLinkFromEmail('Welcome to Dots', 'Log in to Dots', 3).then(res => {
+      expect(res).to.eq(Cypress.config('baseUrl'))
+    })
+
     cy.get('button')
       .contains('Log in')
       .click()
+
     cy.login(data.newUN, data.newPassword)
     cy.get('.brand').should('exist')
     cy.get('h1').should('contain', 'Dots')
